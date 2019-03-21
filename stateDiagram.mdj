@@ -2254,6 +2254,19 @@
 									"propertyLabel": {
 										"$ref": "AAAAAAFpn8q6Mu7ptuo="
 									}
+								},
+								{
+									"_type": "UMLNoteView",
+									"_id": "AAAAAAFpn9Wi+u9wnz0=",
+									"_parent": {
+										"$ref": "AAAAAAFpn6KfG+t2VYg="
+									},
+									"font": "Arial;16;0",
+									"left": 848,
+									"top": 232,
+									"width": 273,
+									"height": 76,
+									"text": "Mulig endring/nye skjema:\n\"heisens egne outputs\" altså lys og bestillinger."
 								}
 							]
 						}
