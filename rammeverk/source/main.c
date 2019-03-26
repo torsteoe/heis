@@ -1,6 +1,8 @@
 #include "elev.h"
 #include <stdio.h>
-
+#include "FSM.h"
+#include "lights.h"
+#include "queue.h"
 
 int main() {
     // Initialize hardware
@@ -11,21 +13,49 @@ int main() {
 
     printf("Press STOP button to stop elevator and exit program.\n");
 
-    elev_set_motor_direction(DIRN_UP);
+    elev_set_motor_direction(DIRN_STOP);
+    FSM_init();
 
     while (1) {
-        // Change direction when we reach top/bottom floor
-        if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
-            elev_set_motor_direction(DIRN_DOWN);
-        } else if (elev_get_floor_sensor_signal() == 0) {
-            elev_set_motor_direction(DIRN_UP);
-        }
 
-        // Stop elevator and exit program if the stop button is pressed
+
+
+         if (elev_get_floor_sensor_signal() != -1) {
+                queue_set_previous_floor(elev_get_floor_sensor_signal());
+
+            }   
+        queue_update_orders();
+        lights_update_lights();
+        
+
+            
         if (elev_get_stop_signal()) {
-            elev_set_motor_direction(DIRN_STOP);
+            queue_print_orders();
             break;
         }
+
+        /* if (elev_get_stop_signal()) {
+            elev_set_motor_direction(DIRN_UP);
+
+            while(1) {
+
+                if (elev_get_floor_sensor_signal() == N_FLOORS-1) {
+                    elev_set_motor_direction(DIRN_DOWN);
+
+                } else if (elev_get_floor_sensor_signal() ==0)  {
+                    elev_set_motor_direction(DIRN_UP);
+                }
+            
+           }
+
+        } */
+
+
+
+
+
+
+        
     }
 
     return 0;
