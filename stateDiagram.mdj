@@ -469,7 +469,7 @@
 									"top": 224,
 									"width": 273,
 									"height": 76,
-									"text": "This is elevatorControl.h's state diagram. This is the module that recieves orders and executes them on main's command."
+									"text": "This is FSM's diagram"
 								},
 								{
 									"_type": "UMLStateView",
