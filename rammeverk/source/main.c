@@ -31,6 +31,8 @@ int main() {
             
         if (elev_get_stop_signal()) {
             queue_print_orders();
+            queue_reset_orders();
+            lights_update_lights();
             break;
         }
 

@@ -6,9 +6,18 @@
 void queue_set_previous_floor();
 int queue_get_previous_floor();
 
+int * queue_get_up_orders();
+int * queue_get_down_orders();
+int * queue_get_panel_orders();
+
+
+
+
 void queue_update_orders();
 void queue_print_orders();
-void queue_reset_queues();
+void queue_reset_orders();
+void queue_init();
+
 
 
 
