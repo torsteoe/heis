@@ -30,7 +30,20 @@ int * queue_get_down_orders() {
 int * queue_get_panel_orders() {
     return panel_orders;
 }
+int queue_get_priority_order() {
+    return priority_orders[0];
+}
 
+//Returns 1 if one must stop, returns 0 otherwise;
+//direction: 0 is down, 1 is up : insert enum.
+int queue_should_I_stop_at_floor(int floor, int direction) {
+    if (direction==0) {
+        return (down_orders[floor] || panel_orders[floor]); //test if this works.
+    }
+    else { //direction is up
+        return (up_orders[floor] || panel_orders[floor]);
+    }
+}
 
 
 //erases all orders for given floor
