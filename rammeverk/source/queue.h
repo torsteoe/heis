@@ -25,5 +25,5 @@ void queue_init();
 void add_up_orders();
 void add_down_orders();
 void add_panel_orders();
-
+void add_priority_orders(int floor);
 
