@@ -58,8 +58,8 @@ void queue_arrived_at_floor(int floor) {
         //if floor in priority_orders all other floors are moved one spot up in priority.
     for (int i = 0; i<ORDER_SIZE; i++) {
         if (priority_orders[i] == floor) {
-            for (int idx = i; i<ORDER_SIZE-1; i++) {
-                priority_orders[i] = priority_orders[i+1];
+            for (int idx = i; idx<ORDER_SIZE-1; idx++) {
+                priority_orders[idx] = priority_orders[idx+1];
             }
             priority_orders[ORDER_SIZE-1] = -1;
             break;
@@ -120,7 +120,6 @@ void add_priority_orders(int floor) {
     //go through priority_orders
     //break if floor in list
     //add if -1, then break
-
     for (int i = 0; i<ORDER_SIZE;i++) {
         if (priority_orders[i] == floor) {
             break;
