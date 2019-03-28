@@ -1,6 +1,6 @@
 #include "elev.h"
 #include <stdio.h>
-
+#include <assert.h>
 
 
 void queue_set_previous_floor();
