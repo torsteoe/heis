@@ -20,10 +20,8 @@ static state now_state = NOTMOVINGMIDDLE;
 
 void FSM_init() { //kjører ned fram til vi enten:
 //er på etasje (kjører så lenge FLOOR!=-1)
-
-    while (elev_get_floor_sensor_signal()==-1) {
-        elev_set_motor_direction(DIRN_DOWN);
-    }
+    elev_set_motor_direction(DIRN_DOWN);
+    while (elev_get_floor_sensor_signal()==-1);
     elev_set_motor_direction(DIRN_STOP);
     now_state = NOTMOVINGATFLOOR;
     
