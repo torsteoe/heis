@@ -1,6 +1,6 @@
 
 #include "FSM.h"
-#include "timer.h"
+
 
 
 
@@ -39,10 +39,10 @@ void FSM_changeState() {
         case NOTMOVINGATFLOOR:
             timer_var = timer_is_timeout();
             if (timer_var) {
-                elev_set_door_open_lamp(0);
+                doors_open_door();
             } else
             {
-                elev_set_door_open_lamp(1);
+                doors_close_door();
             }
             
             elev_set_motor_direction(DIRN_STOP);
@@ -66,8 +66,8 @@ void FSM_changeState() {
                 }
             }
             
-            
-            else if (queue_get_priority_order() == queue_get_previous_floor()) {
+            //burde gjøres finere, holder å sjekke om den er i priority_order() i det heletatt.
+            else if (queue_should_I_stop_at_floor(queue_get_previous_floor,0) || queue_should_I_stop_at_floor(queue_get_previous_floor,0) ) {
                 now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
                 timer_reset();
             }
@@ -107,17 +107,20 @@ void FSM_changeState() {
             break;
 
         case STOPSTATE:
+            elev_set_stop_lamp(1);
             elev_set_motor_direction(DIRN_STOP);
             timer_reset();
             queue_reset_orders();   
 
 
             if (!elev_get_stop_signal() && elev_get_floor_sensor_signal() != -1) {
+                elev_set_stop_lamp(0);
                 queue_print_orders();
                 now_state = NOTMOVINGATFLOOR ;
             }
 
             else if (!elev_get_stop_signal() && !(elev_get_floor_sensor_signal() != -1) ){
+                elev_stop_lamp(0);
                 queue_print_orders();
                 now_state = NOTMOVINGMIDDLE;
             }
