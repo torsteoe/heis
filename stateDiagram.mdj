@@ -1252,7 +1252,7 @@
 													"top": 491,
 													"width": 231,
 													"height": 13,
-													"text": "entry/open_door 3s",
+													"text": "entry/set timer 3s",
 													"horizontalAlignment": 0
 												},
 												{
@@ -1556,13 +1556,30 @@
 													"height": 13,
 													"text": "entry/Stop motor",
 													"horizontalAlignment": 0
+												},
+												{
+													"_type": "UMLInternalActivityView",
+													"_id": "AAAAAAFpxDwuha+yeBc=",
+													"_parent": {
+														"$ref": "AAAAAAFpn8PsUe34ZO8="
+													},
+													"model": {
+														"$ref": "AAAAAAFpxDwuPq+v3PY="
+													},
+													"font": "Arial;13;0",
+													"left": 459,
+													"top": 704,
+													"width": 207,
+													"height": 13,
+													"text": "do/reset_timer 3s",
+													"horizontalAlignment": 0
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 454,
 											"top": 669,
 											"width": 217,
-											"height": 38
+											"height": 53
 										},
 										{
 											"_type": "UMLInternalTransitionCompartmentView",
@@ -1591,7 +1608,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 454,
-											"top": 707,
+											"top": 722,
 											"width": 217
 										}
 									],
@@ -2733,7 +2750,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFpn70gPe05ElI="
 											},
-											"name": "open_door 3s"
+											"name": "set timer 3s"
 										},
 										{
 											"_type": "UMLActivity",
@@ -2768,6 +2785,16 @@
 												"$ref": "AAAAAAFpn8PsUO3xxMY="
 											},
 											"name": "Stop motor"
+										}
+									],
+									"doActivities": [
+										{
+											"_type": "UMLActivity",
+											"_id": "AAAAAAFpxDwuPq+v3PY=",
+											"_parent": {
+												"$ref": "AAAAAAFpn8PsUO3xxMY="
+											},
+											"name": "reset_timer 3s"
 										}
 									]
 								},
@@ -3320,6 +3347,19 @@
 											"name": "ordered_down"
 										}
 									]
+								},
+								{
+									"_type": "UMLTransition",
+									"_id": "AAAAAAFpxDtUn6+SuG0=",
+									"_parent": {
+										"$ref": "AAAAAAFpn6KfG+t1G9E="
+									},
+									"source": {
+										"$ref": "AAAAAAFpn8PsUO3xxMY="
+									},
+									"target": {
+										"$ref": "AAAAAAFpn8PsUO3xxMY="
+									}
 								}
 							]
 						}
