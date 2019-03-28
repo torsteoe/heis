@@ -56,6 +56,7 @@ void FSM_changeState() {
                 
 
             else if ((queue_get_priority_order() > queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                printf("verdier: priority %d, previous %d  ", queue_get_priority_order(), queue_get_previous_floor());
                 now_state = MOVINGUP;
             }
             
@@ -102,16 +103,19 @@ void FSM_changeState() {
 
 
             if (!elev_get_stop_signal() && elev_get_floor_sensor_signal() != -1) {
+                queue_print_orders();
                 now_state = NOTMOVINGATFLOOR ;
             }
 
             else if (!elev_get_stop_signal() && !(elev_get_floor_sensor_signal() != -1) ){
+                queue_print_orders();
                 now_state = NOTMOVINGMIDDLE;
             }
 
             break;
 
         case NOTMOVINGMIDDLE:
+            
             if (!elev_get_stop_signal()) {
                 if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
                     now_state = MOVINGDOWN;

@@ -31,12 +31,7 @@ int main() {
         
         FSM_changeState();
             
-        if (elev_get_stop_signal()) {
-            queue_print_orders();
-            queue_reset_orders();
-            lights_update_lights();
-            break;
-        }
+        
 
         /* if (elev_get_stop_signal()) {
             elev_set_motor_direction(DIRN_UP);
