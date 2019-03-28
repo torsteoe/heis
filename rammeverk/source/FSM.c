@@ -41,39 +41,62 @@ void FSM_changeState(/*variables: previous_floor, current order, stop_button_pre
     switch (now_state) {
        
         case NOTMOVINGATFLOOR:
-            //if ordered down
+            elev_set_motor_direction(DIRN_STOP);
+            //call queue_arrived_at_floor(elev_current_floor)
+            
+            //if (queue_priority_order < elev_current_floor og ikke lik -1)
+            //elev_set_motor_direction(DIRN_DOWN);
                 now_state = MOVINGDOWN;
-            //else if ordered up
+
+            //else if (queue_priority_order > elev_current_floor og ikke lik -1)
+            //elev_set_motor_direction(DIRN_UP);
                 now_state = MOVINGUP;
+
             //else if ordered to same floor
                 now_state = NOTMOVINGATFLOOR;
+
             //else if stop_button_pressed
                 now_state = STOPSTATE;
 
             break;
         case MOVINGDOWN:
-            //if arrived at order
+            elev_set_motor_direction(DIRN_DOWN);
+            //if (queue_should_i_stop_at_floor(elev_current_floor, direction=0))
+            //elev_set_motor_direction(DIRN_STOP);
                 now_state = NOTMOVINGATFLOOR;
-            //if stop_button_pressed
+
+            //else if stop_button_pressed
+            //elev_set_motor_direction(DIRN_STOP);
                 now_state = STOPSTATE;
             break;
         case MOVINGUP:
-            //if arrived at order
+            elev_set_motor_direction(DIRN_UP);
+            //if (queue_should_i_stop_at_floor(elev_current_floor, direction=1))
+            //elev_set_motor_direction(DIRN_STOP);
                 now_state = NOTMOVINGATFLOOR;
-            //if stop_button_pressed
+
+            //else if stop_button_pressed
+            //elev_set_motor_direction(DIRN_STOP);
                 now_state = STOPSTATE;
             break;
         case STOPSTATE:
+            elev_set_motor_direction(DIRN_STOP);
+            queue_reset_orders();    
             //if !stop_button_pressed && on_floor_now
                 now_state = NOTMOVINGATFLOOR ;
-            //if !stop_button_pressed && on_floor_now
+
+            //else if !stop_button_pressed && on_floor_now
                 now_state = NOTMOVINGMIDDLE;
             break;
         case NOTMOVINGMIDDLE:
-            //if ordered_up &&!stop_button_pressed
-            now_state = MOVINGUP;
-            //if ordered_down &&!stop_button_pressed
+
+            //if (queue_priority_order < elev_current_floor) &&!stop_button_pressed
+            //elev_set_motor_direction(DIRN_DOWN);
             now_state = MOVINGDOWN;
+
+            //else if (queue_priority_order > elev_current_floor) &&!stop_button_pressed
+            //elev_set_motor_direction(DIRN_UP);
+            now_state = MOVINGUP;
             break;
 
     }
