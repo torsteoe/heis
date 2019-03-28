@@ -1,8 +1,6 @@
 
 #include "FSM.h"
-
-
-
+#include "timer.h"
 
 
 
@@ -31,7 +29,7 @@ void FSM_init() { //kjører ned fram til vi enten:
 
 
 //setter state =  NOTMOVINGATFLOOR
-
+int timer_var;
 
 void FSM_changeState() {
 
@@ -39,7 +37,14 @@ void FSM_changeState() {
     switch (now_state) {
        
         case NOTMOVINGATFLOOR:
-
+            timer_var = timer_is_timeout();
+            if (timer_var) {
+                elev_set_door_open_lamp(0);
+            } else
+            {
+                elev_set_door_open_lamp(1);
+            }
+            
             elev_set_motor_direction(DIRN_STOP);
             queue_arrived_at_floor(elev_get_floor_sensor_signal());
             
@@ -49,18 +54,22 @@ void FSM_changeState() {
 
 
             else if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
-                now_state = MOVINGDOWN;
+                if (timer_var) {
+                    now_state = MOVINGDOWN;
+                }
             }
                 
 
             else if ((queue_get_priority_order() > queue_get_previous_floor()) && queue_get_priority_order() != -1) {
-                printf("verdier: priority %d, previous %d  ", queue_get_priority_order(), queue_get_previous_floor());
-                now_state = MOVINGUP;
+                if (timer_var) {
+                    now_state = MOVINGUP;
+                }
             }
             
-            //Kan sløyfes denne her
+            
             else if (queue_get_priority_order() == queue_get_previous_floor()) {
-                now_state = NOTMOVINGATFLOOR;
+                now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
+                timer_reset();
             }
 
             break;
@@ -75,6 +84,7 @@ void FSM_changeState() {
             else if (elev_get_floor_sensor_signal() != -1) {
                 if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 0)) {
                     now_state = NOTMOVINGATFLOOR;
+                    timer_reset();
                 }
             }
 
@@ -91,12 +101,14 @@ void FSM_changeState() {
             else if (elev_get_floor_sensor_signal() != -1) {
                 if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 1)) {
                     now_state = NOTMOVINGATFLOOR;
+                    timer_reset();
                 }
             }
             break;
 
         case STOPSTATE:
             elev_set_motor_direction(DIRN_STOP);
+            timer_reset();
             queue_reset_orders();   
 
 
