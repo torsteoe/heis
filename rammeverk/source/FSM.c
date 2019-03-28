@@ -35,68 +35,91 @@ void FSM_init() { //kjører ned fram til vi enten:
 //setter state =  NOTMOVINGATFLOOR
 
 
-void FSM_changeState(/*variables: previous_floor, current order, stop_button_pressed*/) {
+void FSM_changeState() {
 
 
     switch (now_state) {
        
         case NOTMOVINGATFLOOR:
+
             elev_set_motor_direction(DIRN_STOP);
-            //call queue_arrived_at_floor(elev_current_floor)
+            queue_arrived_at_floor(elev_get_floor_sensor_signal());
             
-            //if (queue_priority_order < elev_current_floor og ikke lik -1)
-            //elev_set_motor_direction(DIRN_DOWN);
-                now_state = MOVINGDOWN;
-
-            //else if (queue_priority_order > elev_current_floor og ikke lik -1)
-            //elev_set_motor_direction(DIRN_UP);
-                now_state = MOVINGUP;
-
-            //else if ordered to same floor
-                now_state = NOTMOVINGATFLOOR;
-
-            //else if stop_button_pressed
+            if (elev_get_stop_signal()) {
                 now_state = STOPSTATE;
+            }
+
+
+            else if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                now_state = MOVINGDOWN;
+            }
+                
+
+            else if ((queue_get_priority_order() > queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                now_state = MOVINGUP;
+            }
+            
+            //Kan sløyfes denne her
+            else if (queue_get_priority_order() == queue_get_previous_floor()) {
+                now_state = NOTMOVINGATFLOOR;
+            }
 
             break;
+
         case MOVINGDOWN:
             elev_set_motor_direction(DIRN_DOWN);
-            //if (queue_should_i_stop_at_floor(elev_current_floor, direction=0))
-            //elev_set_motor_direction(DIRN_STOP);
-                now_state = NOTMOVINGATFLOOR;
 
-            //else if stop_button_pressed
-            //elev_set_motor_direction(DIRN_STOP);
+            if (elev_get_stop_signal()) {
                 now_state = STOPSTATE;
+            }
+
+            else if (elev_get_floor_sensor_signal() != -1) {
+                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 0)) {
+                    now_state = NOTMOVINGATFLOOR;
+                }
+            }
+
+            
             break;
+
         case MOVINGUP:
             elev_set_motor_direction(DIRN_UP);
-            //if (queue_should_i_stop_at_floor(elev_current_floor, direction=1))
-            //elev_set_motor_direction(DIRN_STOP);
-                now_state = NOTMOVINGATFLOOR;
-
-            //else if stop_button_pressed
-            //elev_set_motor_direction(DIRN_STOP);
+            
+            if (elev_get_stop_signal()) {
                 now_state = STOPSTATE;
+            }
+
+            else if (elev_get_floor_sensor_signal() != -1) {
+                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 1)) {
+                    now_state = NOTMOVINGATFLOOR;
+                }
+            }
             break;
+
         case STOPSTATE:
             elev_set_motor_direction(DIRN_STOP);
-            queue_reset_orders();    
-            //if !stop_button_pressed && on_floor_now
+            queue_reset_orders();   
+
+
+            if (!elev_get_stop_signal() && elev_get_floor_sensor_signal() != -1) {
                 now_state = NOTMOVINGATFLOOR ;
+            }
 
-            //else if !stop_button_pressed && on_floor_now
+            else if (!elev_get_stop_signal() && !(elev_get_floor_sensor_signal() != -1) ){
                 now_state = NOTMOVINGMIDDLE;
+            }
+
             break;
+
         case NOTMOVINGMIDDLE:
-
-            //if (queue_priority_order < elev_current_floor) &&!stop_button_pressed
-            //elev_set_motor_direction(DIRN_DOWN);
-            now_state = MOVINGDOWN;
-
-            //else if (queue_priority_order > elev_current_floor) &&!stop_button_pressed
-            //elev_set_motor_direction(DIRN_UP);
-            now_state = MOVINGUP;
+            if (!elev_get_stop_signal()) {
+                if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                    now_state = MOVINGDOWN;
+                }  
+                else if ((queue_get_priority_order() > queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                    now_state = MOVINGUP;
+                }
+            }
             break;
 
     }
