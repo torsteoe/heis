@@ -41,13 +41,14 @@ void FSM_changeState(/*variables: previous_floor, current order, stop_button_pre
     switch (now_state) {
        
         case NOTMOVINGATFLOOR:
+            elev_set_motor_direction(DIRN_STOP);
             //call queue_arrived_at_floor(elev_current_floor)
             
-            //if (queue_priority_order < elev_current_floor)
+            //if (queue_priority_order < elev_current_floor og ikke lik -1)
             //elev_set_motor_direction(DIRN_DOWN);
                 now_state = MOVINGDOWN;
 
-            //else if (queue_priority_order > elev_current_floor)
+            //else if (queue_priority_order > elev_current_floor og ikke lik -1)
             //elev_set_motor_direction(DIRN_UP);
                 now_state = MOVINGUP;
 
@@ -59,6 +60,7 @@ void FSM_changeState(/*variables: previous_floor, current order, stop_button_pre
 
             break;
         case MOVINGDOWN:
+            elev_set_motor_direction(DIRN_DOWN);
             //if (queue_should_i_stop_at_floor(elev_current_floor, direction=0))
             //elev_set_motor_direction(DIRN_STOP);
                 now_state = NOTMOVINGATFLOOR;
@@ -68,7 +70,7 @@ void FSM_changeState(/*variables: previous_floor, current order, stop_button_pre
                 now_state = STOPSTATE;
             break;
         case MOVINGUP:
-
+            elev_set_motor_direction(DIRN_UP);
             //if (queue_should_i_stop_at_floor(elev_current_floor, direction=1))
             //elev_set_motor_direction(DIRN_STOP);
                 now_state = NOTMOVINGATFLOOR;
@@ -78,7 +80,8 @@ void FSM_changeState(/*variables: previous_floor, current order, stop_button_pre
                 now_state = STOPSTATE;
             break;
         case STOPSTATE:
-
+            elev_set_motor_direction(DIRN_STOP);
+            queue_reset_orders();    
             //if !stop_button_pressed && on_floor_now
                 now_state = NOTMOVINGATFLOOR ;
 
