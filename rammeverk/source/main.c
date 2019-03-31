@@ -24,10 +24,9 @@ int main() {
 
 
 
-         if (elev_get_floor_sensor_signal() != -1) {
-                queue_set_previous_floor(elev_get_floor_sensor_signal());
+        
+        queue_set_previous_floor(elev_get_floor_sensor_signal());
 
-            } 
 
 
         queue_update_orders();
