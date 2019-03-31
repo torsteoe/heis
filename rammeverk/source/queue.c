@@ -123,7 +123,6 @@ void add_panel_orders() {
 
 //receives a floor, checks if in list, adds if not.
 void add_priority_orders(int floor) {
-    
     assert(floor<4 &&floor >= 0);
     //go through priority_orders
     //break if floor in list
