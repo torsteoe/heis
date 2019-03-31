@@ -7,3 +7,5 @@
 void FSM_init();
 
 void FSM_changeState();
+
+int FSM_get_state();

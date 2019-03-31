@@ -15,6 +15,7 @@ typedef enum STATES {
 } state;
 
 static state now_state = NOTMOVINGMIDDLE;
+static int previous_direction; //0 for down, 1 for up
 
 void FSM_init() { //kjører ned fram til vi enten:
 //er på etasje (kjører så lenge FLOOR!=-1)
@@ -22,15 +23,16 @@ void FSM_init() { //kjører ned fram til vi enten:
     while (elev_get_floor_sensor_signal()==-1);
     elev_set_motor_direction(DIRN_STOP);
     now_state = NOTMOVINGATFLOOR;
-    
+    previous_direction = 0;
     queue_set_previous_floor(elev_get_floor_sensor_signal());  
 } 
 
 
-
 //setter state =  NOTMOVINGATFLOOR
 int timeout;
-
+int FSM_get_state() {
+    return now_state;
+}
 void FSM_changeState() {
 
 
@@ -46,14 +48,26 @@ void FSM_changeState() {
             }
             
             elev_set_motor_direction(DIRN_STOP);
-            queue_arrived_at_floor(queue_get_previous_floor());
+            
             
             if (elev_get_stop_signal()) {
                 now_state = STOPSTATE;
+                break;
             }
 
+            //burde gjøres finere, holder å sjekke om den er i priority_order() i det heletatt.
+            else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),0) || queue_should_I_stop_at_floor(queue_get_previous_floor(),1) ) {
+                now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
+                printf("changing to same state");
+                timer_reset();
+                queue_arrived_at_floor(queue_get_previous_floor());
+                break;
+            }
+            queue_arrived_at_floor(queue_get_previous_floor());
 
-            else if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+
+
+            if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
                 if (timeout) {
                     now_state = MOVINGDOWN;
                 }
@@ -66,18 +80,14 @@ void FSM_changeState() {
                 }
             }
             
-            //burde gjøres finere, holder å sjekke om den er i priority_order() i det heletatt.
-            else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),0) || queue_should_I_stop_at_floor(queue_get_previous_floor(),0) ) {
-                now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
-                timer_reset();
-            }
-
+             
             break;
 
         case MOVINGDOWN:
             elev_set_motor_direction(DIRN_DOWN);
-
+            assert(queue_get_priority_order() != -1);
             if (elev_get_stop_signal()) {
+                previous_direction = 0;
                 now_state = STOPSTATE;
             }
 
@@ -93,8 +103,10 @@ void FSM_changeState() {
 
         case MOVINGUP:
             elev_set_motor_direction(DIRN_UP);
-            
+            assert(queue_get_priority_order() != -1);
+
             if (elev_get_stop_signal()) {
+                previous_direction = 1;
                 now_state = STOPSTATE;
             }
 
@@ -130,7 +142,7 @@ void FSM_changeState() {
             break;
 
         case NOTMOVINGMIDDLE:
-            
+         
             if (!elev_get_stop_signal()) {
                 if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
                     now_state = MOVINGDOWN;
@@ -138,7 +150,19 @@ void FSM_changeState() {
                 else if ((queue_get_priority_order() > queue_get_previous_floor()) && queue_get_priority_order() != -1) {
                     now_state = MOVINGUP;
                 }
+                else if ((queue_get_priority_order() == queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                    if (previous_direction == 0) {
+                        now_state = MOVINGUP;
+                    } else {
+                        now_state = MOVINGDOWN;
+                    }
+                }
             }
+            else if (elev_get_stop_signal()) {
+                now_state = STOPSTATE;
+            }
+
+
             break;
 
     }

@@ -1,15 +1,13 @@
 #include "timer.h"
-
-static time_t time_var;
-
+const double SECONDS = 3; //change to three
+static clock_t clock_var;
 void timer_init() {
-    time_var = time(NULL);
+    clock_var = clock();
 }
 void timer_reset() {
-    time_var = time(NULL);
+    clock_var = clock();
 }
 int timer_is_timeout() {
-    time_t time_now = time(NULL);
-
-    return ((time_now-time_var)>=3);
+    clock_t clock_now = clock();
+    return ((clock_now-clock_var)>=SECONDS*CLOCKS_PER_SEC); 
 }
