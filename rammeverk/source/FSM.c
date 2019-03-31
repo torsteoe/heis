@@ -58,7 +58,6 @@ void FSM_changeState() {
             //burde gjøres finere, holder å sjekke om den er i priority_order() i det heletatt.
             else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),0) || queue_should_I_stop_at_floor(queue_get_previous_floor(),1) ) {
                 now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
-                printf("changing to same state");
                 timer_reset();
                 queue_arrived_at_floor(queue_get_previous_floor());
                 break;
@@ -129,13 +128,11 @@ void FSM_changeState() {
 
             if (!elev_get_stop_signal() && elev_get_floor_sensor_signal() != -1) {
                 elev_set_stop_lamp(0);
-                queue_print_orders();
                 now_state = NOTMOVINGATFLOOR ;
             }
 
             else if (!elev_get_stop_signal() && !(elev_get_floor_sensor_signal() != -1) ){
                 elev_set_stop_lamp(0);
-                queue_print_orders();
                 now_state = NOTMOVINGMIDDLE;
             }
 

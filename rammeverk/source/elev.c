@@ -112,7 +112,6 @@ void elev_set_floor_indicator(int floor) {
         printf("Previous_floor: %d\nfloor_sensor_signal: %d\n", queue_get_previous_floor(), elev_get_floor_sensor_signal());
     }
 
-
     assert(floor >= 0);
     assert(floor < N_FLOORS);
 
