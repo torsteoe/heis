@@ -1252,7 +1252,7 @@
 													"top": 491,
 													"width": 231,
 													"height": 13,
-													"text": "entry/set timer 3s",
+													"text": "entry/reset_timer 3s",
 													"horizontalAlignment": 0
 												},
 												{
@@ -2750,7 +2750,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFpn70gPe05ElI="
 											},
-											"name": "set timer 3s"
+											"name": "reset_timer 3s"
 										},
 										{
 											"_type": "UMLActivity",

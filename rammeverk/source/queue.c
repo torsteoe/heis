@@ -13,7 +13,9 @@ static int priority_orders[ORDER_SIZE]; //default -1
 
 
 void queue_set_previous_floor(int current_floor) {
-    previous_floor = current_floor;
+    if (current_floor != -1){
+        previous_floor = current_floor;
+    }
 }
 
 int queue_get_previous_floor() {
@@ -53,6 +55,7 @@ int queue_should_I_stop_at_floor(int floor, int direction) {
 //erases all orders for given floor
 void queue_arrived_at_floor(int floor) {
     
+    assert(floor<4 && floor >= 0);
         
     up_orders[floor] = 0;
     down_orders[floor] = 0;
@@ -120,7 +123,7 @@ void add_panel_orders() {
 
 //receives a floor, checks if in list, adds if not.
 void add_priority_orders(int floor) {
-
+    assert(floor<4 &&floor >= 0);
     //go through priority_orders
     //break if floor in list
     //add if -1, then break

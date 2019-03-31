@@ -7,7 +7,8 @@
 #include "channels.h"
 #include "elev.h"
 #include "io.h"
-
+#include "queue.h"
+#include "FSM.h"
 #include <assert.h>
 #include <stdlib.h>
 
@@ -104,6 +105,14 @@ int elev_get_floor_sensor_signal(void) {
 }
 
 void elev_set_floor_indicator(int floor) {
+
+    if (floor<0 || floor >=N_FLOORS) {
+        queue_print_orders();
+        printf("State : %d\n", FSM_get_state());
+        printf("Previous_floor: %d\nfloor_sensor_signal: %d\n", queue_get_previous_floor(), elev_get_floor_sensor_signal());
+    }
+
+
     assert(floor >= 0);
     assert(floor < N_FLOORS);
 

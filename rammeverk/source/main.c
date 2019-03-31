@@ -24,10 +24,9 @@ int main() {
 
 
 
-         if (elev_get_floor_sensor_signal() != -1) {
-                queue_set_previous_floor(elev_get_floor_sensor_signal());
+        
+        queue_set_previous_floor(elev_get_floor_sensor_signal());
 
-            } 
 
 
         queue_update_orders();
@@ -36,22 +35,6 @@ int main() {
         FSM_changeState();
             
         
-
-        /* if (elev_get_stop_signal()) {
-            elev_set_motor_direction(DIRN_UP);
-
-            while(1) {
-
-                if (elev_get_floor_sensor_signal() == N_FLOORS-1) {
-                    elev_set_motor_direction(DIRN_DOWN);
-
-                } else if (elev_get_floor_sensor_signal() ==0)  {
-                    elev_set_motor_direction(DIRN_UP);
-                }
-            
-           }
-
-        } */
 
 
 
