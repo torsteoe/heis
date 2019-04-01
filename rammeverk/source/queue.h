@@ -1,3 +1,7 @@
+#ifndef QUEUE_H__   /*include guard*/
+#define QUEUE_H__
+
+
 #include "elev.h"
 #include <stdio.h>
 #include <assert.h>
@@ -28,3 +32,4 @@ void add_down_orders();
 void add_panel_orders();
 void add_priority_orders(int floor);
 
+#endif //#ifndef QUEUE_H__
