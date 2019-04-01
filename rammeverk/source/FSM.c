@@ -19,7 +19,7 @@ static int previous_direction; //0 for down, 1 for up
 
 void FSM_init() { //kjører ned fram til vi enten:
 //er på etasje (kjører så lenge FLOOR!=-1)
-    elev_set_motor_direction(DIRN_DOWN);
+    elev_set_motor_direction(DIRN_UP);
     while (elev_get_floor_sensor_signal()==-1);
     elev_set_motor_direction(DIRN_STOP);
     now_state = NOTMOVINGATFLOOR;

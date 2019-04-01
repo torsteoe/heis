@@ -1,4 +1,4 @@
-SOURCES := main.c elev.c io.c FSM.c queue.c lights.c timer.c doors.c
+SOURCES := main.c elev.c FSM.c queue.c lights.c timer.c doors.c
 
 BUILD_DIR := build
 OBJ := $(SOURCES:%.c=$(BUILD_DIR)/%.o)
@@ -9,7 +9,7 @@ SRC := $(SOURCES:%.c=$(SRC_DIR)/%.c)
 CC := clang
 CFLAGS := -O0 -g3 -Wall -Werror -std=gnu99
 
-LDFLAGS := -lcomedi -lm
+LDFLAGS := -lm
 
 .DEFAULT_GOAL := heis
 

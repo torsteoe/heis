@@ -1,5 +1,5 @@
 #include "timer.h"
-const double SECONDS = 3; //change to three
+const double SECONDS = 0.03; //change to three
 static clock_t clock_var;
 void timer_init() {
     clock_var = clock();
