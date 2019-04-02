@@ -22,7 +22,7 @@ void queue_update_orders();
 void queue_print_orders();
 void queue_reset_orders();
 void queue_init();
-
+int queue_orders_in_direction(int direction);
 
 
 

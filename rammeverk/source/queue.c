@@ -76,6 +76,22 @@ void queue_arrived_at_floor(int floor) {
     
 }
 
+//Returns 1 if orders in this direction. 0 if no orders in direction. 0 is down, 1 is up
+int queue_orders_in_direction(int direction) {
+    int orders_exist = 0;
+
+    if (direction == 0) {
+        for (int i = 0; i<previous_floor; i++) {
+            orders_exist += queue_should_I_stop_at_floor(i, 0);
+        }
+    }
+    else {
+        for (int i = previous_floor+1; i<ORDER_SIZE; i++) {
+            orders_exist += queue_should_I_stop_at_floor(i, 1);
+        }
+    }
+    return (orders_exist>0);
+}
 
 
 

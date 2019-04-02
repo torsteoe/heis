@@ -97,6 +97,9 @@ void FSM_changeState() {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
                 }
+                if (!queue_orders_in_direction(0)) {
+                    now_state = NOTMOVINGATFLOOR;
+                }
             }
 
             
@@ -115,6 +118,9 @@ void FSM_changeState() {
                 if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 1)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
+                }
+                if (!queue_orders_in_direction(1)) {
+                    now_state = NOTMOVINGATFLOOR;
                 }
             }
             break;
