@@ -17,7 +17,7 @@ int queue_get_priority_order();
 
 
 int queue_should_I_stop_at_floor(int floor, int direction);
-void queue_delete_floor_orders(int floor);
+void queue_delete_floor_orders();
 void queue_update_orders();
 void queue_print_orders(); //just for debugging purposes
 void queue_reset_orders();

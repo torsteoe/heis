@@ -59,11 +59,11 @@ void FSM_changeState() {
             else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),2)) {
                 now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
                 timer_reset();
-                queue_delete_floor_orders(queue_get_previous_floor());
+                queue_delete_floor_orders();
                 break;
             }
             
-            queue_delete_floor_orders(queue_get_previous_floor());
+            queue_delete_floor_orders();
 
             if (timeout) {
                 if (ordered_down()) {

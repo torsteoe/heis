@@ -56,8 +56,8 @@ int queue_should_I_stop_at_floor(int floor, int direction) {
 
 
 //erases all orders for given floor
-void queue_delete_floor_orders(int floor) {
-    
+void queue_delete_floor_orders() {
+    int floor = previous_floor;
     assert(floor<4 && floor >= 0);
         
     up_orders[floor] = 0;
