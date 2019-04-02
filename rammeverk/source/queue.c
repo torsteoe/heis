@@ -38,7 +38,8 @@ int queue_get_priority_order() {
 
 //Returns 1 if one must stop, returns 0 otherwise;
 //direction: 0 is down, 1 is up, 2 is both will be checked : replace this with DIRN_DOWN and DIRN_UP if possible?
-int queue_should_I_stop_at_floor(int floor, int direction) {
+int queue_should_I_stop_at_floor(int direction) {
+    int floor = previous_floor;
     if (priority_orders[0] == floor) {
         return 1;
     }
@@ -83,14 +84,14 @@ void queue_delete_floor_orders() {
 int queue_orders_in_direction(int direction) {
     int orders_exist = 0;
 
-    if (direction == -1) {
+    if (direction == DIRN_DOWN) {
         for (int i = 0; i<previous_floor; i++) {
-            orders_exist += queue_should_I_stop_at_floor(i, 0);
+            orders_exist += (down_orders[i]+ panel_orders[i]);
         }
     }
     else {
         for (int i = previous_floor+1; i<ORDER_SIZE; i++) {
-            orders_exist += queue_should_I_stop_at_floor(i, 1);
+            orders_exist += (up_orders[i]+ panel_orders[i]);
         }
     }
     if (orders_exist==0) {

@@ -56,7 +56,7 @@ void FSM_changeState() {
             }
 
             //checks if order on this floor exists in any order_queue
-            else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),2)) {
+            else if (ordered_to_same_floor()) {
                 now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
                 timer_reset();
                 queue_delete_floor_orders();
@@ -86,11 +86,11 @@ void FSM_changeState() {
             }
 
             else if (on_floor()) {
-                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), DIRN_DOWN)) {
+                if (queue_should_I_stop_at_floor(DIRN_DOWN)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
                 }
-                else if (!queue_orders_in_direction(DIRN_DOWN)) {
+                else if (!queue_orders_in_direction(DIRN_DOWN)) { //safety measure
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -107,7 +107,7 @@ void FSM_changeState() {
             }
 
             else if (on_floor()) {
-                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), DIRN_UP)) {
+                if (queue_should_I_stop_at_floor(DIRN_UP)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
                 }
@@ -164,7 +164,9 @@ void FSM_changeState() {
 
     }
 }
-
+int ordered_to_same_floor() {
+    return (queue_should_I_stop_at_floor(2));
+}
 int ordered_up() {
     return (orders_exist() && queue_get_priority_order() > queue_get_previous_floor());
 }
