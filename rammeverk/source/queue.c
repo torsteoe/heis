@@ -90,6 +90,9 @@ int queue_orders_in_direction(int direction) {
             orders_exist += queue_should_I_stop_at_floor(i, 1);
         }
     }
+    if (orders_exist==0) {
+        printf("safety measure will be taken");
+    }
     return (orders_exist>0);
 }
 

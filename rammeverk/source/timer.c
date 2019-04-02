@@ -1,6 +1,7 @@
 #include "timer.h"
 const double SECONDS = 3; //change to three
 static clock_t clock_var;
+
 void timer_init() {
     clock_var = clock();
 }
