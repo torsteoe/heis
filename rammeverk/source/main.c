@@ -16,8 +16,9 @@ int main() {
 
     elev_set_motor_direction(DIRN_STOP);
 
-    timer_init();
+    
     FSM_init();
+    timer_init();
     queue_init();
 
     while (1) {

@@ -42,12 +42,8 @@ void FSM_changeState() {
        
         case NOTMOVINGATFLOOR:
             timeout = timer_is_timeout();
-            if (timeout) {
-                doors_close_door();
-            } else
-            {
-                doors_open_door();
-            }
+            
+            doors_change_state(timeout);
             
             elev_set_motor_direction(DIRN_STOP);
             
@@ -92,12 +88,12 @@ void FSM_changeState() {
                 now_state = STOPSTATE;
             }
 
-            else if (elev_get_floor_sensor_signal() != -1) {
+            else if (on_floor()) {
                 if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 0)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
                 }
-                if (!queue_orders_in_direction(0)) {
+                else if (!queue_orders_in_direction(0)) {
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -114,12 +110,12 @@ void FSM_changeState() {
                 now_state = STOPSTATE;
             }
 
-            else if (elev_get_floor_sensor_signal() != -1) {
+            else if (on_floor()) {
                 if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 1)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
                 }
-                if (!queue_orders_in_direction(1)) {
+                else if (!queue_orders_in_direction(1)) {
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -130,16 +126,17 @@ void FSM_changeState() {
             elev_set_stop_lamp(1);
             timer_reset();
             queue_reset_orders();   
-            if (elev_get_floor_sensor_signal() != -1) {
-                doors_open_door();
-            }
+            
 
-            if (!elev_get_stop_signal() && elev_get_floor_sensor_signal() != -1) {
+            doors_change_state(!(on_floor()));
+            
+
+            if (!elev_get_stop_signal() && on_floor()) {
                 elev_set_stop_lamp(0);
                 now_state = NOTMOVINGATFLOOR ;
             }
 
-            else if (!elev_get_stop_signal() && !(elev_get_floor_sensor_signal() != -1) ){
+            else if (!elev_get_stop_signal() && !(on_floor()) ){
                 elev_set_stop_lamp(0);
                 now_state = NOTMOVINGMIDDLE;
             }
@@ -171,4 +168,10 @@ void FSM_changeState() {
             break;
 
     }
+}
+
+
+
+int on_floor() {
+    return (elev_get_floor_sensor_signal() != -1);
 }

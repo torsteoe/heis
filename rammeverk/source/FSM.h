@@ -14,4 +14,9 @@ void FSM_changeState();
 
 int FSM_get_state();
 
+
+
+//hjelpefunksjoner
+int on_floor();
+int orders_exist();
 #endif //#ifndef FSM_H__

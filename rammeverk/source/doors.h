@@ -5,8 +5,11 @@
 
 #include "elev.h"
 
-void doors_open_door();
-void doors_close_door();
+void doors_change_state(int timeout);
 
 
+//hjelpefunksjoner
+
+void open_door();
+void close_door();
 #endif //#ifndef DOORS_H__
