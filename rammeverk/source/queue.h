@@ -19,10 +19,10 @@ int queue_get_priority_order();
 int queue_should_I_stop_at_floor(int floor, int direction);
 void queue_delete_floor_orders(int floor);
 void queue_update_orders();
-void queue_print_orders();
+void queue_print_orders(); //just for debugging purposes
 void queue_reset_orders();
 void queue_init();
-int queue_orders_in_direction(int direction);
+int queue_orders_in_direction(int direction); //just for safety
 
 
 

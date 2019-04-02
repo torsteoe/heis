@@ -9,9 +9,7 @@
 
 
 void FSM_init();
-
 void FSM_changeState();
-
 int FSM_get_state();
 
 
@@ -21,4 +19,5 @@ int ordered_up();
 int ordered_down();
 int on_floor();
 int orders_exist();
+
 #endif //#ifndef FSM_H__
