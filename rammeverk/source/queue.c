@@ -37,16 +37,19 @@ int queue_get_priority_order() {
 }
 
 //Returns 1 if one must stop, returns 0 otherwise;
-//direction: 0 is down, 1 is up : replace this with DIRN_DOWN and DIRN_UP if possible?
+//direction: 0 is down, 1 is up, 2 is both will be checked : replace this with DIRN_DOWN and DIRN_UP if possible?
 int queue_should_I_stop_at_floor(int floor, int direction) {
     if (priority_orders[0] == floor) {
         return 1;
     }
-    if (direction==0) {
-        return (down_orders[floor] || panel_orders[floor]); //test if this works.
+    if (direction==0) { //direction is down
+        return (down_orders[floor] || panel_orders[floor]); 
     }
-    else { //direction is up
+    else if (direction==1) { //direction is up
         return (up_orders[floor] || panel_orders[floor]);
+    }
+    else { //checks in both directions
+        return (down_orders[floor] || up_orders[floor] || panel_orders[floor]);
     }
     
 }

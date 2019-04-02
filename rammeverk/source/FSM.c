@@ -53,8 +53,8 @@ void FSM_changeState() {
                 break;
             }
 
-            //burde gjøres finere, holder å sjekke om den er i priority_order() i det heletatt.
-            else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),0) || queue_should_I_stop_at_floor(queue_get_previous_floor(),1) ) {
+            //checks if order on this floor exists in any order_queue
+            else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),2)) {
                 now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
                 timer_reset();
                 queue_arrived_at_floor(queue_get_previous_floor());
@@ -64,14 +64,14 @@ void FSM_changeState() {
 
 
 
-            if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+            if ((queue_get_priority_order() < queue_get_previous_floor()) && orders_exist()) {
                 if (timeout) {
                     now_state = MOVINGDOWN;
                 }
             }
                 
 
-            else if ((queue_get_priority_order() > queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+            else if ((queue_get_priority_order() > queue_get_previous_floor()) && orders_exist()) {
                 if (timeout) {
                     now_state = MOVINGUP;
                 }
@@ -82,7 +82,7 @@ void FSM_changeState() {
 
         case MOVINGDOWN:
             elev_set_motor_direction(DIRN_DOWN);
-            assert(queue_get_priority_order() != -1);
+            assert(orders_exist());
             if (elev_get_stop_signal()) {
                 previous_direction = 0;
                 now_state = STOPSTATE;
@@ -103,7 +103,7 @@ void FSM_changeState() {
 
         case MOVINGUP:
             elev_set_motor_direction(DIRN_UP);
-            assert(queue_get_priority_order() != -1);
+            assert(orders_exist());
 
             if (elev_get_stop_signal()) {
                 previous_direction = 1;
@@ -146,13 +146,13 @@ void FSM_changeState() {
         case NOTMOVINGMIDDLE:
          
             if (!elev_get_stop_signal()) {
-                if ((queue_get_priority_order() < queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                if ((queue_get_priority_order() < queue_get_previous_floor()) && orders_exist()) {
                     now_state = MOVINGDOWN;
                 }  
-                else if ((queue_get_priority_order() > queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                else if ((queue_get_priority_order() > queue_get_previous_floor()) && orders_exist()) {
                     now_state = MOVINGUP;
                 }
-                else if ((queue_get_priority_order() == queue_get_previous_floor()) && queue_get_priority_order() != -1) {
+                else if ((queue_get_priority_order() == queue_get_previous_floor()) && orders_exist()) {
                     if (previous_direction == 0) {
                         now_state = MOVINGUP;
                     } else {
@@ -174,4 +174,7 @@ void FSM_changeState() {
 
 int on_floor() {
     return (elev_get_floor_sensor_signal() != -1);
+}
+int orders_exist() {
+    return (queue_get_priority_order() != -1);
 }
