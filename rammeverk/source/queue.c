@@ -84,16 +84,18 @@ void queue_delete_floor_orders() {
 int queue_orders_in_direction(int direction) {
     int orders_exist = 0;
 
-    if (direction == DIRN_DOWN) {
-        for (int i = 0; i<previous_floor; i++) {
-            orders_exist += (down_orders[i]+ panel_orders[i]);
+    for (int priority_idx = 0; priority_idx<ORDER_SIZE; priority_idx++) {
+        if (direction == DIRN_DOWN) {
+            for (int floor = 0; floor<previous_floor; floor++) {
+                orders_exist += (priority_orders[priority_idx]==floor);
+            }
+        } else {
+            for (int floor = previous_floor+1; floor<ORDER_SIZE; floor++) {
+                orders_exist += (priority_orders[priority_idx]==floor);
+            } 
         }
     }
-    else {
-        for (int i = previous_floor+1; i<ORDER_SIZE; i++) {
-            orders_exist += (up_orders[i]+ panel_orders[i]);
-        }
-    }
+    
     if (orders_exist==0) {
         printf("safety measure will be taken");
     }
