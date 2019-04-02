@@ -3,7 +3,6 @@
 #include "FSM.h"
 #include "lights.h"
 #include "queue.h"
-#include "timer.h"
 
 int main() {
     // Initialize hardware
@@ -18,8 +17,7 @@ int main() {
 
     
     FSM_init();
-    timer_init();
-    queue_init();
+    
 
     while (1) {
 

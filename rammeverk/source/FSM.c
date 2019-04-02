@@ -15,7 +15,7 @@ typedef enum STATES {
 } state;
 
 static state now_state = NOTMOVINGMIDDLE;
-static int previous_direction; //0 for down, 1 for up
+static elev_motor_direction_t previous_direction; //-1 for down, 1 for up
 
 void FSM_init() { //kjører ned fram til vi enten:
 //er på etasje (kjører så lenge FLOOR!=-1)
@@ -25,6 +25,10 @@ void FSM_init() { //kjører ned fram til vi enten:
     now_state = NOTMOVINGATFLOOR;
     previous_direction = 0;
     queue_set_previous_floor(elev_get_floor_sensor_signal());  
+
+
+    timer_init();
+    queue_init();
 } 
 
 
@@ -41,11 +45,9 @@ void FSM_changeState() {
     switch (now_state) {
        
         case NOTMOVINGATFLOOR:
-            timeout = timer_is_timeout();
-            
-            doors_change_state(timeout);
-            
+            timeout = timer_is_timeout(); //in case timer changes during function.
             elev_set_motor_direction(DIRN_STOP);
+            doors_change_state(timeout);
             
             
             if (elev_get_stop_signal()) {
@@ -57,43 +59,38 @@ void FSM_changeState() {
             else if (queue_should_I_stop_at_floor(queue_get_previous_floor(),2)) {
                 now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
                 timer_reset();
-                queue_arrived_at_floor(queue_get_previous_floor());
+                queue_delete_floor_orders(queue_get_previous_floor());
                 break;
             }
-            queue_arrived_at_floor(queue_get_previous_floor());
+            
+            queue_delete_floor_orders(queue_get_previous_floor());
 
-
-
-            if ((queue_get_priority_order() < queue_get_previous_floor()) && orders_exist()) {
-                if (timeout) {
+            if (timeout) {
+                if (ordered_down()) {
                     now_state = MOVINGDOWN;
                 }
-            }
                 
-
-            else if ((queue_get_priority_order() > queue_get_previous_floor()) && orders_exist()) {
-                if (timeout) {
+                else if (ordered_up()) {
                     now_state = MOVINGUP;
                 }
             }
-            
-             
+  
             break;
 
         case MOVINGDOWN:
             elev_set_motor_direction(DIRN_DOWN);
-            assert(orders_exist());
-            if (elev_get_stop_signal()) {
-                previous_direction = 0;
+
+            if (elev_get_stop_signal()) { 
+                previous_direction = DIRN_DOWN; //In case we are stopped in between floors.
                 now_state = STOPSTATE;
             }
 
             else if (on_floor()) {
-                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 0)) {
+                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), DIRN_DOWN)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
                 }
-                else if (!queue_orders_in_direction(0)) {
+                else if (!queue_orders_in_direction(DIRN_DOWN)) {
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -103,7 +100,6 @@ void FSM_changeState() {
 
         case MOVINGUP:
             elev_set_motor_direction(DIRN_UP);
-            assert(orders_exist());
 
             if (elev_get_stop_signal()) {
                 previous_direction = 1;
@@ -111,11 +107,11 @@ void FSM_changeState() {
             }
 
             else if (on_floor()) {
-                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), 1)) {
+                if (queue_should_I_stop_at_floor(elev_get_floor_sensor_signal(), DIRN_UP)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_reset();
                 }
-                else if (!queue_orders_in_direction(1)) {
+                else if (!queue_orders_in_direction(DIRN_UP)) {
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -144,34 +140,37 @@ void FSM_changeState() {
             break;
 
         case NOTMOVINGMIDDLE:
-         
-            if (!elev_get_stop_signal()) {
-                if ((queue_get_priority_order() < queue_get_previous_floor()) && orders_exist()) {
+
+            if (elev_get_stop_signal()) {
+                now_state = STOPSTATE;
+            }
+            else {
+                if (ordered_down()) {
                     now_state = MOVINGDOWN;
                 }  
-                else if ((queue_get_priority_order() > queue_get_previous_floor()) && orders_exist()) {
+                else if (ordered_up()) {
                     now_state = MOVINGUP;
                 }
                 else if ((queue_get_priority_order() == queue_get_previous_floor()) && orders_exist()) {
-                    if (previous_direction == 0) {
+                    if (previous_direction == DIRN_DOWN) {
                         now_state = MOVINGUP;
                     } else {
                         now_state = MOVINGDOWN;
                     }
                 }
             }
-            else if (elev_get_stop_signal()) {
-                now_state = STOPSTATE;
-            }
-
-
+            
             break;
 
     }
 }
 
-
-
+int ordered_up() {
+    return (orders_exist() && queue_get_priority_order() > queue_get_previous_floor());
+}
+int ordered_down() {
+    return (orders_exist() && queue_get_priority_order() < queue_get_previous_floor());
+}
 int on_floor() {
     return (elev_get_floor_sensor_signal() != -1);
 }

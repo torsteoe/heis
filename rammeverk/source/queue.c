@@ -42,7 +42,7 @@ int queue_should_I_stop_at_floor(int floor, int direction) {
     if (priority_orders[0] == floor) {
         return 1;
     }
-    if (direction==0) { //direction is down
+    if (direction==-1) { //direction is down
         return (down_orders[floor] || panel_orders[floor]); 
     }
     else if (direction==1) { //direction is up
@@ -56,7 +56,7 @@ int queue_should_I_stop_at_floor(int floor, int direction) {
 
 
 //erases all orders for given floor
-void queue_arrived_at_floor(int floor) {
+void queue_delete_floor_orders(int floor) {
     
     assert(floor<4 && floor >= 0);
         
@@ -79,11 +79,11 @@ void queue_arrived_at_floor(int floor) {
     
 }
 
-//Returns 1 if orders in this direction. 0 if no orders in direction. 0 is down, 1 is up
+//Returns 1 if orders in this direction. 0 if no orders in direction. -1 is down, 1 is up
 int queue_orders_in_direction(int direction) {
     int orders_exist = 0;
 
-    if (direction == 0) {
+    if (direction == -1) {
         for (int i = 0; i<previous_floor; i++) {
             orders_exist += queue_should_I_stop_at_floor(i, 0);
         }
