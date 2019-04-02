@@ -2,9 +2,6 @@
 #include "FSM.h"
 
 
-
-
-
 typedef enum STATES {
     //INIT, //maybe superfluous
     NOTMOVINGATFLOOR, 
@@ -23,7 +20,7 @@ void FSM_init() { //kjører ned fram til vi enten:
     while (elev_get_floor_sensor_signal()==-1);
     elev_set_motor_direction(DIRN_STOP);
     now_state = NOTMOVINGATFLOOR;
-    previous_direction = 0;
+    previous_direction = DIRN_DOWN;
     queue_set_previous_floor(elev_get_floor_sensor_signal());  
 
 
@@ -32,7 +29,6 @@ void FSM_init() { //kjører ned fram til vi enten:
 } 
 
 
-//setter state =  NOTMOVINGATFLOOR
 int timeout;
 int FSM_get_state() {
     return now_state;
@@ -102,7 +98,7 @@ void FSM_changeState() {
             elev_set_motor_direction(DIRN_UP);
 
             if (elev_get_stop_signal()) {
-                previous_direction = 1;
+                previous_direction = DIRN_UP;
                 now_state = STOPSTATE;
             }
 
