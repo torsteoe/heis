@@ -151,7 +151,8 @@ void FSM_changeState() {
                 else if (ordered_up()) {
                     now_state = MOVINGUP;
                 }
-                else if ((queue_get_priority_order() == queue_get_previous_floor()) && orders_exist()) {
+
+                else if (ordered_to_same_floor()) {
                     if (previous_direction == DIRN_DOWN) {
                         now_state = MOVINGUP;
                     } else {
