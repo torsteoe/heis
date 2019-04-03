@@ -1,4 +1,9 @@
-#ifndef LIGHTS_H__	/*include guard*/
+/**
+ * @file
+ * @brief A simple library for doing operations on lights
+ * buffers consisting of integers
+ */
+ #ifndef LIGHTS_H__	/*include guard*/
 #define LIGHTS_H__
 
 

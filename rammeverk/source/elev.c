@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief Implementation file for the Elevator control module.
+ */
 // Wrapper for libComedi Elevator control.
 // These functions provides an interface to the elevators in the real time lab
 //

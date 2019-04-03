@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief A simple library for accessing queues and
+ * doing operations on queue
+ */
 #ifndef QUEUE_H__   /*include guard*/
 #define QUEUE_H__
 

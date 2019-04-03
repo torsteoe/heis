@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief Implementation file for the doors module.
+ */
 #include "doors.h"
 
 void open_door() {

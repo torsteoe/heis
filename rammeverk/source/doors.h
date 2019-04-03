@@ -1,4 +1,8 @@
-
+/**
+ * @file
+ * @brief A simple library for controlling the doors of the elevator
+ * 
+ */
 #ifndef DOORS_H__	/*include guard*/
 #define DOORS_H__
 

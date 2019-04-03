@@ -1,9 +1,14 @@
+/**
+ * @file
+ * @brief These functions provide and interface to libComedi limited to use in
+ * the real time lab.
+ */
 // Wrapper for libComedi I/O.
 // These functions provide and interface to libComedi limited to use in
 // the real time lab.
 //
 // 2006, Martin Korsgaard
-#ifndef __INCLUDE_IO_H__
+#ifndef __INCLUDE_IO_H__ /*include guard*/
 #define __INCLUDE_IO_H__
 
 

@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief A simple library for doing operations with timer
+ */
 #ifndef TIMER_H__	/*include guard*/
 #define TIMER_H__
 

@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief Implementation file for the queue module.
+ */
 #include "queue.h"
 
 

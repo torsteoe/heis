@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief The main file of the application.
+ */
 #include "elev.h"
 #include <stdio.h>
 #include "FSM.h"

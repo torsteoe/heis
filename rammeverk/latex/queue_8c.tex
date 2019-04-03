@@ -1,0 +1,73 @@
+\hypertarget{queue_8c}{}\section{source/queue.c File Reference}
+\label{queue_8c}\index{source/queue.c@{source/queue.c}}
+
+
+Implementation file for the queue module.  
+
+
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{queue_8c_afdb08b95d302f48890b5d5a60e2ed1b4}\label{queue_8c_afdb08b95d302f48890b5d5a60e2ed1b4}} 
+void {\bfseries queue\+\_\+set\+\_\+previous\+\_\+floor} (int current\+\_\+floor)
+\item 
+\mbox{\Hypertarget{queue_8c_adfb872c17097206a7f0ed3ed22aaad28}\label{queue_8c_adfb872c17097206a7f0ed3ed22aaad28}} 
+int {\bfseries queue\+\_\+get\+\_\+previous\+\_\+floor} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a3b1a7d42d26a3a3733894a0f19ff8028}\label{queue_8c_a3b1a7d42d26a3a3733894a0f19ff8028}} 
+int $\ast$ {\bfseries queue\+\_\+get\+\_\+up\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a88aabb208ab330deebcee5891d1a6d3c}\label{queue_8c_a88aabb208ab330deebcee5891d1a6d3c}} 
+int $\ast$ {\bfseries queue\+\_\+get\+\_\+down\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a575921a16ca9e63e7a306faebc2233f4}\label{queue_8c_a575921a16ca9e63e7a306faebc2233f4}} 
+int $\ast$ {\bfseries queue\+\_\+get\+\_\+panel\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a62f3ee497cfec496d15e0e210dd1ee78}\label{queue_8c_a62f3ee497cfec496d15e0e210dd1ee78}} 
+int {\bfseries queue\+\_\+get\+\_\+priority\+\_\+order} ()
+\item 
+\mbox{\Hypertarget{queue_8c_aabdac24759b543e67fe5cf6938e84d9f}\label{queue_8c_aabdac24759b543e67fe5cf6938e84d9f}} 
+int {\bfseries queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor} (int direction)
+\item 
+\mbox{\Hypertarget{queue_8c_ad11c327ee856d320e7e4741a777505d2}\label{queue_8c_ad11c327ee856d320e7e4741a777505d2}} 
+void {\bfseries queue\+\_\+delete\+\_\+floor\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a0c362b06a1ece79df2a6617b367fca8f}\label{queue_8c_a0c362b06a1ece79df2a6617b367fca8f}} 
+int {\bfseries queue\+\_\+orders\+\_\+in\+\_\+direction} (int direction)
+\item 
+\mbox{\Hypertarget{queue_8c_a738c57c092eaae0b4e2e663d8cce93d5}\label{queue_8c_a738c57c092eaae0b4e2e663d8cce93d5}} 
+void {\bfseries queue\+\_\+init} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a9c8ee999898cb642da2cc838de1f2301}\label{queue_8c_a9c8ee999898cb642da2cc838de1f2301}} 
+void {\bfseries queue\+\_\+update\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a5c2de1b2fea24dd4d8b1c680643d12fc}\label{queue_8c_a5c2de1b2fea24dd4d8b1c680643d12fc}} 
+void {\bfseries add\+\_\+up\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a97e784779e21c8189e713631d406c989}\label{queue_8c_a97e784779e21c8189e713631d406c989}} 
+void {\bfseries add\+\_\+down\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_aa8b0496c9a85b96329de85c3859212db}\label{queue_8c_aa8b0496c9a85b96329de85c3859212db}} 
+void {\bfseries add\+\_\+panel\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_a08c8dd5727a38b0e0a4c85b37be2e61d}\label{queue_8c_a08c8dd5727a38b0e0a4c85b37be2e61d}} 
+void {\bfseries add\+\_\+priority\+\_\+orders} (int floor)
+\item 
+\mbox{\Hypertarget{queue_8c_afb92094b2527c54ce0c94d9fea708691}\label{queue_8c_afb92094b2527c54ce0c94d9fea708691}} 
+void {\bfseries queue\+\_\+reset\+\_\+orders} ()
+\item 
+\mbox{\Hypertarget{queue_8c_ab509c47eb8f2833868d725bfc3f08c6e}\label{queue_8c_ab509c47eb8f2833868d725bfc3f08c6e}} 
+void {\bfseries queue\+\_\+print\+\_\+orders} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{queue_8c_a8b39957d8636cc75a159ab478ec0bcc5}\label{queue_8c_a8b39957d8636cc75a159ab478ec0bcc5}} 
+const int {\bfseries O\+R\+D\+E\+R\+\_\+\+S\+I\+ZE} = 4
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation file for the queue module. 
+

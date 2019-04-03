@@ -1,4 +1,7 @@
-
+/**
+ * @file
+ * @brief Implementation file for the state machine module.
+ */
 #include "FSM.h"
 
 
