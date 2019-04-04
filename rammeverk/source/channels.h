@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief A simple library for defining channels for elevator control
+ * 
+ */
 // Channel definitions for elevator control using LibComedi
 //
 // 2006, Martin Korsgaard

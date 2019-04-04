@@ -1,12 +1,23 @@
-
+/**
+ * @file
+ * @brief A simple library for controlling the doors of the elevator
+ * 
+ */
 #ifndef DOORS_H__	/*include guard*/
 #define DOORS_H__
 
 
 #include "elev.h"
 
-void doors_open_door();
-void doors_close_door();
+/**
+  Change state of doors (open/closed).
+  @param[in] close integer: 1 to close door, 0 to open.
+*/
+void doors_change_state(int close);
 
+
+//hjelpefunksjoner
+void open_door();
+void close_door();
 
 #endif //#ifndef DOORS_H__

@@ -1,8 +1,21 @@
+/**
+ * @file
+ * @brief Implementation file for the doors module.
+ */
 #include "doors.h"
 
-void doors_open_door() {
+void open_door() {
     elev_set_door_open_lamp(1);
 }
-void doors_close_door() {
+void close_door() {
     elev_set_door_open_lamp(0);
+}
+
+void doors_change_state(int close) {
+    if (close) {
+        close_door();
+    } else
+    {
+        open_door();
+    }
 }

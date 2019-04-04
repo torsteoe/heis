@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief Implementation file for the queue module.
+ */
 #include "queue.h"
 
 
@@ -37,24 +41,28 @@ int queue_get_priority_order() {
 }
 
 //Returns 1 if one must stop, returns 0 otherwise;
-//direction: 0 is down, 1 is up : replace this with DIRN_DOWN and DIRN_UP if possible?
-int queue_should_I_stop_at_floor(int floor, int direction) {
+//direction: 0 is down, 1 is up, 2 is both will be checked : replace this with DIRN_DOWN and DIRN_UP if possible?
+int queue_should_I_stop_at_floor(int direction) {
+    int floor = previous_floor;
     if (priority_orders[0] == floor) {
         return 1;
     }
-    if (direction==0) {
-        return (down_orders[floor] || panel_orders[floor]); //test if this works.
+    if (direction==-1) { //direction is down
+        return (down_orders[floor] || panel_orders[floor]); 
     }
-    else { //direction is up
+    else if (direction==1) { //direction is up
         return (up_orders[floor] || panel_orders[floor]);
+    }
+    else { //checks in both directions
+        return (down_orders[floor] || up_orders[floor] || panel_orders[floor]);
     }
     
 }
 
 
 //erases all orders for given floor
-void queue_arrived_at_floor(int floor) {
-    
+void queue_delete_floor_orders() {
+    int floor = previous_floor;
     assert(floor<4 && floor >= 0);
         
     up_orders[floor] = 0;
@@ -76,6 +84,27 @@ void queue_arrived_at_floor(int floor) {
     
 }
 
+//Returns 1 if orders in this direction. 0 if no orders in direction. -1 is down, 1 is up
+int queue_orders_in_direction(int direction) {
+    int orders_exist = 0;
+
+    for (int priority_idx = 0; priority_idx<ORDER_SIZE; priority_idx++) {
+        if (direction == DIRN_DOWN) {
+            for (int floor = 0; floor<previous_floor; floor++) {
+                orders_exist += (priority_orders[priority_idx]==floor);
+            }
+        } else {
+            for (int floor = previous_floor+1; floor<ORDER_SIZE; floor++) {
+                orders_exist += (priority_orders[priority_idx]==floor);
+            } 
+        }
+    }
+    
+    if (orders_exist==0) {
+        printf("safety measure will be taken");
+    }
+    return (orders_exist>0);
+}
 
 
 

@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief Implementation file for the lights module.
+ */
 #include "lights.h"
 
 

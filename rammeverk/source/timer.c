@@ -1,8 +1,13 @@
+/**
+ * @file
+ * @brief Implementation file for the timer module.
+ */
 #include "timer.h"
 const double SECONDS = 0.03; //change to three
 static clock_t clock_var;
+
 void timer_init() {
-    clock_var = clock();
+    timer_reset(); //changed from clock_var = clock();
 }
 void timer_reset() {
     clock_var = clock();
