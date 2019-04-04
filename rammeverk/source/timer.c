@@ -7,7 +7,7 @@ const double SECONDS = 3; //change to three
 static clock_t clock_var;
 
 void timer_init() {
-    clock_var = clock();
+    timer_reset(); //changed from clock_var = clock();
 }
 void timer_reset() {
     clock_var = clock();

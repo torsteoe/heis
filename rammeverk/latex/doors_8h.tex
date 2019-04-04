@@ -9,8 +9,7 @@ A simple library for controlling the doors of the elevator.
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{doors_8h_af43a7c60363d272365b85672a14c928a}\label{doors_8h_af43a7c60363d272365b85672a14c928a}} 
-void {\bfseries doors\+\_\+change\+\_\+state} (int timeout)
+void \mbox{\hyperlink{doors_8h_a786cda284ac81980ff4cab42fd7111d9}{doors\+\_\+change\+\_\+state}} (int close)
 \item 
 \mbox{\Hypertarget{doors_8h_a423745a554b7b74fd8a6ee276f3ee4f6}\label{doors_8h_a423745a554b7b74fd8a6ee276f3ee4f6}} 
 void {\bfseries open\+\_\+door} ()
@@ -22,4 +21,22 @@ void {\bfseries close\+\_\+door} ()
 
 \subsection{Detailed Description}
 A simple library for controlling the doors of the elevator. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{doors_8h_a786cda284ac81980ff4cab42fd7111d9}\label{doors_8h_a786cda284ac81980ff4cab42fd7111d9}} 
+\index{doors.h@{doors.h}!doors\_change\_state@{doors\_change\_state}}
+\index{doors\_change\_state@{doors\_change\_state}!doors.h@{doors.h}}
+\subsubsection{\texorpdfstring{doors\_change\_state()}{doors\_change\_state()}}
+{\footnotesize\ttfamily void doors\+\_\+change\+\_\+state (\begin{DoxyParamCaption}\item[{int}]{close }\end{DoxyParamCaption})}
+
+Change state of doors (open/closed). 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em close} & integer\+: 1 to close door, 0 to open. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file doors.\+c.
 

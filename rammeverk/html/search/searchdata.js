@@ -2,7 +2,7 @@ var indexSectionsWithContent =
 {
   0: "cdefilmqt",
   1: "cdefilmqt",
-  2: "efi",
+  2: "defilt",
   3: "e",
   4: "t"
 };

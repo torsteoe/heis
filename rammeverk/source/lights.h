@@ -10,6 +10,9 @@
 #include "elev.h"
 #include "queue.h"
 
+/**
+  Updates all lights except door lamp and stop lamp. 
+*/
 void lights_update_lights();
 
 
