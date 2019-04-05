@@ -4,18 +4,23 @@
  */
 #include "lights.h"
 
+//hjelpefunksjoner
+
+static void m_set_floor_indicator_lights();
+static void m_set_order_indicator_lights();
+
 
 void lights_update_lights() {
-    set_floor_indicator_lights();
-    set_order_indicator_lights();
+    m_set_floor_indicator_lights();
+    m_set_order_indicator_lights();
 }
 
-void set_floor_indicator_lights() {
+void m_set_floor_indicator_lights() {
     elev_set_floor_indicator(queue_get_previous_floor());
 }
 
 
-void set_order_indicator_lights() {
+void m_set_order_indicator_lights() {
     int * up = queue_get_up_orders();
     int * down = queue_get_down_orders();
     int * panel = queue_get_panel_orders();

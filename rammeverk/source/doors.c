@@ -4,18 +4,23 @@
  */
 #include "doors.h"
 
-void open_door() {
+//hjelpefunksjoner
+static void m_open_door();
+static void m_close_door();
+
+
+void m_open_door() {
     elev_set_door_open_lamp(1);
 }
-void close_door() {
+void m_close_door() {
     elev_set_door_open_lamp(0);
 }
 
 void doors_change_state(int close) {
     if (close) {
-        close_door();
+        m_close_door();
     } else
     {
-        open_door();
+        m_open_door();
     }
 }

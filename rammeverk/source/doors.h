@@ -16,8 +16,6 @@
 void doors_change_state(int close);
 
 
-//hjelpefunksjoner
-void open_door();
-void close_door();
+
 
 #endif //#ifndef DOORS_H__

@@ -28,12 +28,5 @@ int FSM_get_state();
 
 
 
-//hjelpefunksjoner
-
-int ordered_to_same_floor();
-int ordered_up();
-int ordered_down();
-int on_floor();
-int orders_exist();
 
 #endif //#ifndef FSM_H__

@@ -56,21 +56,33 @@ int queue_get_priority_order();
   @return @c 1 to signal stop, @c 0 to signal no stop
 */
 int queue_should_I_stop_at_floor(int direction);
+
+/**
+  Delete orders at current floor.
+*/
 void queue_delete_floor_orders();
+
+/**
+  Iterate buttons and update orders accordingly.
+*/
 void queue_update_orders();
+
+/**
+  Print all orders in nice format in console.
+*/
 void queue_print_orders(); //just for debugging purposes
+
+/**
+  Set all order lists to default state.
+*/
 void queue_reset_orders();
-void queue_init();
 
+/**
+  Check if orders in direction that elevator will stop at. Safety measure.
+  @param[in] direction -1 for down, 1 for up.
+  @return @c 1 to signal orders exist, @c 0 to signal no orders.
+*/
+int queue_orders_in_direction(int direction); 
 
-int queue_orders_in_direction(int direction); //just for safety
-
-
-
-//hjelpefunksjoner
-void add_up_orders();
-void add_down_orders();
-void add_panel_orders();
-void add_priority_orders(int floor);
 
 #endif //#ifndef QUEUE_H__
