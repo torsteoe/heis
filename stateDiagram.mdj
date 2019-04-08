@@ -469,7 +469,7 @@
 									"top": 224,
 									"width": 273,
 									"height": 76,
-									"text": "This is the FSM's diagram"
+									"text": "This is FSM.h's state diagram"
 								},
 								{
 									"_type": "UMLStateView",
