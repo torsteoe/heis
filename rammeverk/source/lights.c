@@ -3,7 +3,7 @@
  * @brief Implementation file for the lights module.
  */
 #include "lights.h"
-
+#include "malloc.h"
 //hjelpefunksjoner
 
 static void m_set_floor_indicator_lights();
@@ -21,9 +21,10 @@ void m_set_floor_indicator_lights() {
 
 
 void m_set_order_indicator_lights() {
-    int * up = queue_get_up_orders();
-    int * down = queue_get_down_orders();
-    int * panel = queue_get_panel_orders();
+    int ** all_orders = queue_get_orders();
+    int * up = all_orders[0];
+    int * down = all_orders[1];
+    int * panel = all_orders[2];
 
     for (int i = 0; i<3; i++) {
         elev_set_button_lamp(BUTTON_CALL_UP, i, up[i]);
@@ -34,4 +35,6 @@ void m_set_order_indicator_lights() {
     for (int i = 0; i<4; i++) {
         elev_set_button_lamp(BUTTON_COMMAND, i, panel[i]);
     }
+    free(all_orders);
+    all_orders = NULL;
 }

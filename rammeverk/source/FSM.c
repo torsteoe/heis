@@ -4,6 +4,7 @@
  */
 #include "FSM.h"
 #include "stdlib.h"
+#include <stdio.h>
 
 typedef enum STATES {
     //INIT, //maybe superfluous
@@ -27,18 +28,28 @@ static int m_on_floor();
 static int m_orders_exist();
 
 
-void FSM_init() { //kjører ned fram til vi enten:
-//er på etasje (kjører så lenge FLOOR!=-1)
+int FSM_init() { 
+
+// Initialize hardware
+    if (!elev_init()) {
+        printf("Unable to initialize elevator hardware!\n");
+        return 0;
+    }
+
+    printf("Your elevator is ready.\n");
+
     elev_set_motor_direction(DIRN_DOWN);
     while (elev_get_floor_sensor_signal()==-1);
     elev_set_motor_direction(DIRN_STOP);
+    printf("Ferdig og setter ned \n");
     now_state = NOTMOVINGATFLOOR;
     previous_direction = DIRN_DOWN;
-    queue_set_previous_floor(elev_get_floor_sensor_signal());  
 
     doors_change_state(0);
-    timer_reset();
+    timer_start();
     queue_reset_orders();
+
+    return 1;
 } 
 
 
@@ -48,13 +59,13 @@ int FSM_get_state() {
 }
 
 
-void FSM_changeState() {
+void FSM_update_state() {
 
 
     switch (now_state) {
        
         case NOTMOVINGATFLOOR:
-            timeout = timer_is_timeout(); //in case timer changes during function.
+            timeout = timer_expired(); //in case timer changes during function.
         
             elev_set_motor_direction(DIRN_STOP);
             doors_change_state(timeout);
@@ -67,8 +78,8 @@ void FSM_changeState() {
 
             //checks if order on this floor exists in any order_queue
             else if (m_ordered_to_same_floor()) {
-                now_state = NOTMOVINGATFLOOR; //can be removed but is kept for legibility.
-                timer_reset();
+                now_state = NOTMOVINGATFLOOR; //can be removed but makes code easier to read.
+                timer_start();
                 queue_delete_floor_orders();
                 break;
             }
@@ -98,7 +109,7 @@ void FSM_changeState() {
             else if (m_on_floor()) {
                 if (queue_should_I_stop_at_floor(DIRN_DOWN)) {
                     now_state = NOTMOVINGATFLOOR;
-                    timer_reset();
+                    timer_start();
                 }
                 else if (!queue_orders_in_direction(DIRN_DOWN)) { //safety measure
                     now_state = NOTMOVINGATFLOOR;
@@ -119,7 +130,7 @@ void FSM_changeState() {
             else if (m_on_floor()) {
                 if (queue_should_I_stop_at_floor(DIRN_UP)) {
                     now_state = NOTMOVINGATFLOOR;
-                    timer_reset();
+                    timer_start();
                 }
                 else if (!queue_orders_in_direction(DIRN_UP)) {
                     now_state = NOTMOVINGATFLOOR;
@@ -130,7 +141,7 @@ void FSM_changeState() {
         case STOPSTATE:
             elev_set_motor_direction(DIRN_STOP);
             elev_set_stop_lamp(1);
-            timer_reset();
+            timer_start();
             queue_reset_orders();   
             
 
@@ -175,6 +186,8 @@ void FSM_changeState() {
 
     }
 }
+
+
 int m_ordered_to_same_floor() {
     return (queue_should_I_stop_at_floor(2));
 }

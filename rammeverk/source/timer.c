@@ -6,13 +6,10 @@
 const double SECONDS = 3; //change to three
 static clock_t clock_var;
 
-void timer_init() {
-    timer_reset(); //changed from clock_var = clock();
-}
-void timer_reset() {
+void timer_start() {
     clock_var = clock();
 }
-int timer_is_timeout() {
+int timer_expired() {
     clock_t clock_now = clock();
     return ((clock_now-clock_var)>=SECONDS*CLOCKS_PER_SEC); 
 }

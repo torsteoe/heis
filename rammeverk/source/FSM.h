@@ -13,12 +13,12 @@
 /**
   Initialize elevator.
 */
-void FSM_init();
+int FSM_init();
 
 /**
   Perform action based on what state one is in. Change state if required.
 */
-void FSM_changeState();
+void FSM_update_state();
 
 /**
   Initialize elevator.

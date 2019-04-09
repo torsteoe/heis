@@ -3,7 +3,7 @@
  * @brief Implementation file for the queue module.
  */
 #include "queue.h"
-
+#include "malloc.h"
 
 const int ORDER_SIZE = 4;
 
@@ -21,17 +21,23 @@ static void m_add_panel_orders();
 static void m_add_priority_orders(int floor);
 
 
-void queue_set_previous_floor(int current_floor) {
-    if (current_floor != -1){
-        previous_floor = current_floor;
-    }
+
+
+int ** queue_get_orders() {
+    int ** orders = (int **) malloc(3*sizeof(up_orders));
+    orders[0] = up_orders;
+    orders[1] = down_orders;
+    orders[2] = panel_orders;
+    return orders;
 }
+
+
 
 int queue_get_previous_floor() {
     return previous_floor;
 }
 
-int * queue_get_up_orders() {
+/* int * queue_get_up_orders() {
     return up_orders;
 }
 int * queue_get_down_orders() {
@@ -40,7 +46,7 @@ int * queue_get_down_orders() {
 
 int * queue_get_panel_orders() {
     return panel_orders;
-}
+} */
 int queue_get_priority_order() {
     return priority_orders[0];
 }
@@ -118,6 +124,12 @@ int queue_orders_in_direction(int direction) {
 
 
 void queue_update_orders() {
+
+    int current_floor = elev_get_floor_sensor_signal();
+    if (current_floor != -1){
+        previous_floor = current_floor;
+    }
+    
     m_add_down_orders();
     m_add_up_orders();
     m_add_panel_orders();
