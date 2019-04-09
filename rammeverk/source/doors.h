@@ -11,13 +11,11 @@
 
 /**
   Change state of doors (open/closed).
-  @param[in] close integer: 1 to close door, 0 to open.
+  @param[in] close 1 to close door, 0 to open.
 */
 void doors_change_state(int close);
 
 
-//hjelpefunksjoner
-void open_door();
-void close_door();
+
 
 #endif //#ifndef DOORS_H__

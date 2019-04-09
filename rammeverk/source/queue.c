@@ -14,6 +14,11 @@ static int panel_orders[ORDER_SIZE];
 static int priority_orders[ORDER_SIZE]; //default -1 
 
 
+//hjelpefunksjoner
+static void m_add_up_orders();
+static void m_add_down_orders();
+static void m_add_panel_orders();
+static void m_add_priority_orders(int floor);
 
 
 void queue_set_previous_floor(int current_floor) {
@@ -109,49 +114,47 @@ int queue_orders_in_direction(int direction) {
 
 
 
-void queue_init() {
-    queue_reset_orders();
-}
+
 
 
 void queue_update_orders() {
-    add_down_orders();
-    add_up_orders();
-    add_panel_orders();
+    m_add_down_orders();
+    m_add_up_orders();
+    m_add_panel_orders();
     //priority_orders updated in the three functions above
 }
 
 
 
-void add_up_orders() {
+void m_add_up_orders() {
     for (int i = 0; i<ORDER_SIZE-1; i++) {
         if (elev_get_button_signal(BUTTON_CALL_UP, i)) {
             up_orders[i] = 1;
-            add_priority_orders(i);
+            m_add_priority_orders(i);
         }    
     }
 }
-void add_down_orders() {
+void m_add_down_orders() {
     for (int i = 1; i<ORDER_SIZE; i++) {
         if (elev_get_button_signal(BUTTON_CALL_DOWN, i)) {
             down_orders[i]=1;
-            add_priority_orders(i);
+            m_add_priority_orders(i);
         }
     }
 }
 
-void add_panel_orders() {
+void m_add_panel_orders() {
     for (int i = 0; i<ORDER_SIZE; i++) {
         if (elev_get_button_signal(BUTTON_COMMAND, i)) {
             panel_orders[i] = 1;
-            add_priority_orders(i);
+            m_add_priority_orders(i);
         }
         
     }
 }
 
 //receives a floor, checks if in list, adds if not.
-void add_priority_orders(int floor) {
+void m_add_priority_orders(int floor) {
     assert(floor<4 &&floor >= 0);
     //go through priority_orders
     //break if floor in list
