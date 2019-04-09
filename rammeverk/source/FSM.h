@@ -22,7 +22,7 @@ void FSM_update_state();
 
 /**
   Initialize elevator.
-  @return @c int ranging from @c 0 to @c 4 based on state.
+  @return @c 0 to @c 4 based on current state.
 */
 int FSM_get_state();
 
