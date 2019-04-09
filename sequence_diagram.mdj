@@ -1477,7 +1477,7 @@
 												"$ref": "AAAAAAFp/YKxj7VyFMI="
 											},
 											"edgePosition": 1,
-											"text": "5 : Update_lights"
+											"text": "5 : update_lights"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1689,8 +1689,8 @@
 												"$ref": "AAAAAAFp/YgcRbZHvcA="
 											},
 											"font": "Arial;13;0",
-											"left": 521,
-											"top": 464,
+											"left": 518,
+											"top": 472,
 											"width": 125.734375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -1712,8 +1712,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 583,
-											"top": 449,
+											"left": 580,
+											"top": 457,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -1733,8 +1733,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 583,
-											"top": 484,
+											"left": 580,
+											"top": 492,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -1755,7 +1755,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 717,
-											"top": 480,
+											"top": 488,
 											"width": 14,
 											"height": 25
 										}
@@ -1767,7 +1767,7 @@
 									"tail": {
 										"$ref": "AAAAAAFpoERW3UlXAVk="
 									},
-									"points": "450:480;717:480",
+									"points": "444:488;717:488",
 									"nameLabel": {
 										"$ref": "AAAAAAFp/YgcRbZJhj4="
 									},
@@ -1811,7 +1811,7 @@
 												"$ref": "AAAAAAFp/YkoR7ZqljU="
 											},
 											"edgePosition": 1,
-											"text": "8 : Set_lights"
+											"text": "8 : set_lights"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1922,7 +1922,7 @@
 												"$ref": "AAAAAAFp/Yq3PraBRxQ="
 											},
 											"edgePosition": 1,
-											"text": "9 : change_state"
+											"text": "9 : update_state"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2023,9 +2023,9 @@
 												"$ref": "AAAAAAFp/YsuBLaXBa0="
 											},
 											"font": "Arial;13;0",
-											"left": 589,
+											"left": 549,
 											"top": 596,
-											"width": 127.181640625,
+											"width": 206.68603515625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2033,7 +2033,7 @@
 												"$ref": "AAAAAAFp/YsuBLaYZyw="
 											},
 											"edgePosition": 1,
-											"text": "10 : get_priority_order"
+											"text": "10 : get_priority_order and get_floor"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2134,9 +2134,9 @@
 												"$ref": "AAAAAAFp/YuaH7avtaI="
 											},
 											"font": "Arial;13;0",
-											"left": 600,
+											"left": 573,
 											"top": 616,
-											"width": 100.9150390625,
+											"width": 155.11767578125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2144,7 +2144,7 @@
 												"$ref": "AAAAAAFp/YuaH7aw5m8="
 											},
 											"edgePosition": 1,
-											"text": "11 : priority_order"
+											"text": "11 : priority_order and floor"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3382,7 +3382,7 @@
 												"$ref": "AAAAAAFp/Zg33bgJwAo="
 											},
 											"edgePosition": 1,
-											"text": "21 : change_state"
+											"text": "21 : update_state"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3493,7 +3493,7 @@
 												"$ref": "AAAAAAFp/ZjM0LghfAs="
 											},
 											"edgePosition": 1,
-											"text": "22 : get_floor_signal"
+											"text": "22 : get_floor"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3604,7 +3604,7 @@
 												"$ref": "AAAAAAFp/ZkSHbg50Hg="
 											},
 											"edgePosition": 1,
-											"text": "23 : at_floor"
+											"text": "23 : floor"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4622,9 +4622,9 @@
 															"font": "Arial;13;0",
 															"left": 36,
 															"top": 150,
-															"width": 369.23046875,
+															"width": 709.591796875,
 															"height": 13,
-															"text": "[This whole process is repeated twice for this spesific sequence]"
+															"text": "[This whole process is identical no matter what floor you are going to. In this spesific scenario it needs to be repeated twice]"
 														}
 													],
 													"font": "Arial;13;0",
@@ -4727,7 +4727,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "Update_lights",
+							"name": "update_lights",
 							"source": {
 								"$ref": "AAAAAAFpoERdMklv5IM="
 							},
@@ -4771,7 +4771,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "Set_lights",
+							"name": "set_lights",
 							"source": {
 								"$ref": "AAAAAAFpoEAjcUj/4Lo="
 							},
@@ -4786,7 +4786,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "change_state",
+							"name": "update_state",
 							"source": {
 								"$ref": "AAAAAAFpoERdMklv5IM="
 							},
@@ -4801,7 +4801,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "get_priority_order",
+							"name": "get_priority_order and get_floor",
 							"source": {
 								"$ref": "AAAAAAFpoERx+kmOCaE="
 							},
@@ -4815,7 +4815,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "priority_order",
+							"name": "priority_order and floor",
 							"source": {
 								"$ref": "AAAAAAFpoERW3ElQdpc="
 							},
@@ -4962,7 +4962,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "change_state",
+							"name": "update_state",
 							"source": {
 								"$ref": "AAAAAAFpoERdMklv5IM="
 							},
@@ -4977,7 +4977,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "get_floor_signal",
+							"name": "get_floor",
 							"source": {
 								"$ref": "AAAAAAFpoERx+kmOCaE="
 							},
@@ -4991,7 +4991,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpoD/fWEjR3Vc="
 							},
-							"name": "at_floor",
+							"name": "floor",
 							"source": {
 								"$ref": "AAAAAAFpoEAFgUjgJkw="
 							},
@@ -5355,7 +5355,7 @@
 										"$ref": "AAAAAAFp/bGW/7raqlc="
 									},
 									"name": "Operand1",
-									"guard": "This whole process is repeated twice for this spesific sequence"
+									"guard": "This whole process is identical no matter what floor you are going to. In this spesific scenario it needs to be repeated twice"
 								}
 							]
 						}
@@ -5387,7 +5387,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFpoD/fV0jQ8tU="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -5404,7 +5405,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFpoD/fV0jQ8tU="
 					},
-					"name": "Role5"
+					"name": "Role5",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -5421,7 +5423,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFpoD/fV0jQ8tU="
 					},
-					"name": "Role7"
+					"name": "Role7",
+					"type": ""
 				}
 			]
 		}
