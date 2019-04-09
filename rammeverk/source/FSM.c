@@ -89,10 +89,12 @@ void FSM_update_state() {
             if (timeout) {
                 if (m_ordered_down()) {
                     now_state = MOVINGDOWN;
+                    previous_direction = DIRN_DOWN;
                 }
                 
                 else if (m_ordered_up()) {
                     now_state = MOVINGUP;
+                    previous_direction = DIRN_UP;
                 }
             }
   
@@ -102,11 +104,11 @@ void FSM_update_state() {
             elev_set_motor_direction(DIRN_DOWN);
 
             if (elev_get_stop_signal()) { 
-                previous_direction = DIRN_DOWN; //In case we are stopped in between floors.
                 now_state = STOPSTATE;
             }
 
             else if (m_on_floor()) {
+
                 if (queue_should_I_stop_at_floor(DIRN_DOWN)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_start();
@@ -120,19 +122,22 @@ void FSM_update_state() {
             break;
 
         case MOVINGUP:
+            
             elev_set_motor_direction(DIRN_UP);
 
             if (elev_get_stop_signal()) {
-                previous_direction = DIRN_UP;
+                printf("nå går vi til stop");
                 now_state = STOPSTATE;
             }
 
             else if (m_on_floor()) {
+
                 if (queue_should_I_stop_at_floor(DIRN_UP)) {
                     now_state = NOTMOVINGATFLOOR;
                     timer_start();
                 }
                 else if (!queue_orders_in_direction(DIRN_UP)) {
+                    printf("her borte");
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -189,7 +194,7 @@ void FSM_update_state() {
 
 
 int m_ordered_to_same_floor() {
-    return (queue_should_I_stop_at_floor(2));
+    return (queue_get_priority_order() == queue_get_previous_floor());
 }
 int m_ordered_up() {
     return (m_orders_exist() && queue_get_priority_order() > queue_get_previous_floor());

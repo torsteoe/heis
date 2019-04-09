@@ -60,7 +60,7 @@ int queue_get_priority_order();
 
 /**
   Check if elevator should stop at floor.
-  @param[in] direction -1 for down, 1 for up, 2 to signal check in both directions
+  @param[in] direction -1 for down, 1 for up.
   @return @c 1 to signal stop, @c 0 to signal no stop
 */
 int queue_should_I_stop_at_floor(int direction);
