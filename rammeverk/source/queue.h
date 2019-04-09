@@ -12,16 +12,11 @@
 #include <assert.h>
 
 
-
+/**
+  Fetches array of order_lists.
+  @return int ** array of pointers to the different order lists.
+*/
 int ** queue_get_orders();
-
-
-
-
-
-
-
-
 
 
 /**
@@ -29,27 +24,6 @@ int ** queue_get_orders();
   @return floor ranging from @c 0 to @c 3.
 */
 int queue_get_previous_floor();
-
-/**
-  Fetches array of up-orders.
-  @return array where each floor is represented by a 0 or 1, depending on, respectively, if
-  there is an order or not.
-*/
-//int * queue_get_up_orders();
-
-/**
-  Fetches array of down-orders.
-  @return array where each floor is represented by a 0 or 1, depending on, respectively, if
-  there is an order or not.
-*/
-//int * queue_get_down_orders();
-
-/**
-  Fetches array of panel-orders (orders inside elevator).
-  @return array where each floor is represented by a 0 or 1, depending on, respectively, if
-  there is an order or not.
-*/
-//int * queue_get_panel_orders();
 
 /**
   Fetches priority order, first floor that was ordered that has still not been visited since order.
