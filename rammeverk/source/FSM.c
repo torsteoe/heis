@@ -191,7 +191,10 @@ void FSM_update_state() {
 
 
 int m_ordered_to_same_floor() {
-    return (queue_should_I_stop_at_floor(DIRN_DOWN) || queue_should_I_stop_at_floor(DIRN_UP));
+    if (m_on_floor()) {
+        return (queue_should_I_stop_at_floor(DIRN_DOWN) || queue_should_I_stop_at_floor(DIRN_UP));
+    }
+    return (queue_get_priority_order() == queue_get_previous_floor());
 }
 int m_ordered_up() {
     return (m_orders_exist() && queue_get_priority_order() > queue_get_previous_floor());
