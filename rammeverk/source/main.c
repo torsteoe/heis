@@ -13,7 +13,7 @@ int main() {
     };
     
 
-    while (!elev_get_obstruction_signal()) {
+    while (1) {
 
         queue_update_orders();
         lights_update_lights(queue_get_previous_floor(), queue_get_orders()); //kan gi int **orders som input parameter her
