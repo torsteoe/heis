@@ -37,16 +37,6 @@ int queue_get_previous_floor() {
     return previous_floor;
 }
 
-/* int * queue_get_up_orders() {
-    return up_orders;
-}
-int * queue_get_down_orders() {
-    return down_orders;
-}
-
-int * queue_get_panel_orders() {
-    return panel_orders;
-} */
 int queue_get_priority_order() {
     return priority_orders[0];
 }
@@ -114,9 +104,6 @@ int queue_orders_in_direction(int direction) {
         }
     }
     
-    if (orders_exist==0) {
-        printf("safety measure will be taken");
-    }
     return (orders_exist>0);
 }
 
@@ -200,27 +187,24 @@ void queue_reset_orders() {
 
 void queue_print_orders() {
 
-    printf("Here comes the sun: \n") ;
+    printf("Here come the orders: \n") ;
 
     printf("Uporders: \n");
     for (int i = 0; i<ORDER_SIZE-1; i++) {
         printf("%d: %d,\t", i, up_orders[i]); 
     }
-    printf("\n");
 
-    printf("down_orders: \n");
+    printf("\ndown_orders: \n\t");
     for (int i = 1; i<ORDER_SIZE; i++) {
         printf("%d: %d,\t", i, down_orders[i]); 
     }
-    printf("\n");
 
-    printf("panel_orders: \n");
+    printf("\npanel_orders: \n");
     for (int i = 0; i<ORDER_SIZE; i++) {
         printf("%d: %d,\t", i, panel_orders[i]); 
     }
-    printf("\n");
 
-    printf("priority_orders: \n");
+    printf("\npriority_orders: \n");
     for (int i = 0; i<ORDER_SIZE; i++) {
         printf("%d: %d,\t", i, priority_orders[i]); 
     }

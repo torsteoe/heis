@@ -20,7 +20,6 @@ int main() {
         FSM_update_state();
 
     }
-    free(queue_get_orders());
 
     return 0;
 }

@@ -41,7 +41,6 @@ int FSM_init() {
     elev_set_motor_direction(DIRN_DOWN);
     while (elev_get_floor_sensor_signal()==-1);
     elev_set_motor_direction(DIRN_STOP);
-    printf("Ferdig og setter ned \n");
     now_state = NOTMOVINGATFLOOR;
     previous_direction = DIRN_DOWN;
 
@@ -126,7 +125,6 @@ void FSM_update_state() {
             elev_set_motor_direction(DIRN_UP);
 
             if (elev_get_stop_signal()) {
-                printf("nå går vi til stop");
                 now_state = STOPSTATE;
             }
 
@@ -137,7 +135,6 @@ void FSM_update_state() {
                     timer_start();
                 }
                 else if (!queue_orders_in_direction(DIRN_UP)) {
-                    printf("her borte");
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -194,7 +191,7 @@ void FSM_update_state() {
 
 
 int m_ordered_to_same_floor() {
-    return (queue_get_priority_order() == queue_get_previous_floor());
+    return (queue_should_I_stop_at_floor(DIRN_DOWN) || queue_should_I_stop_at_floor(DIRN_UP));
 }
 int m_ordered_up() {
     return (m_orders_exist() && queue_get_priority_order() > queue_get_previous_floor());
