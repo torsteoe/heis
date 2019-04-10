@@ -6,6 +6,10 @@
 #include "stdlib.h"
 #include <stdio.h>
 
+
+/**
+  States for the state machine.
+*/
 typedef enum STATES {
     //INIT, //maybe superfluous
     NOTMOVINGATFLOOR, 
@@ -29,7 +33,6 @@ static int m_orders_exist();
 
 
 int FSM_init() { 
-
 // Initialize hardware
     if (!elev_init()) {
         printf("Unable to initialize elevator hardware!\n");
@@ -53,10 +56,6 @@ int FSM_init() {
 
 
 int timeout;
-int FSM_get_state() {
-    return now_state;
-}
-
 
 void FSM_update_state() {
 

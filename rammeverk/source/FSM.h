@@ -10,8 +10,11 @@
 #include "timer.h"
 #include "doors.h"
 
+
+
 /**
   Initialize elevator.
+  @return @c 1 on success, @c 0 if failed initiation.
 */
 int FSM_init();
 
@@ -20,11 +23,6 @@ int FSM_init();
 */
 void FSM_update_state();
 
-/**
-  Initialize elevator.
-  @return @c 0 to @c 4 based on current state.
-*/
-int FSM_get_state();
 
 
 
