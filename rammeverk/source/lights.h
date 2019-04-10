@@ -11,10 +11,10 @@
 
 /**
   Updates all lights except door lamp and stop lamp. 
-  @param[in] previous_floor floor last visited or current floor if elevator on floor, used to set floor indicator lamp.
+  @param[in] last_floor_visited floor last visited or current floor if elevator on floor, used to set floor indicator lamp.
   @param[in, out] pp_orders pointer to dynamically allocated array containing all orders. Used to set button lights. Freed at end of function. 
 */
-void lights_update_lights(int previous_floor, int ** pp_orders);
+void lights_update_lights(int last_floor_visited, int ** pp_orders);
 
 
 

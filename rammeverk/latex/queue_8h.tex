@@ -7,7 +7,6 @@ A library for accessing queues and doing operations on queue.
 
 {\ttfamily \#include \char`\"{}elev.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
-{\ttfamily \#include $<$assert.\+h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -56,7 +55,7 @@ Definition at line 68 of file queue.\+c.
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_a9099e4c8298049220ba24a7ed21d6b1c}{}\label{queue_8h_a9099e4c8298049220ba24a7ed21d6b1c}
 Fetches array of order\+\_\+lists. \begin{DoxyReturn}{Returns}
-int $\ast$$\ast$ array of pointers to the different order lists. 
+pointer to dynamically allocated array containing all orders. 
 \end{DoxyReturn}
 
 
@@ -69,7 +68,7 @@ Definition at line 26 of file queue.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}{}\label{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}
-Fetches previous floor. \begin{DoxyReturn}{Returns}
+Fetches previous or current floor if elevator on floor. \begin{DoxyReturn}{Returns}
 floor ranging from {\ttfamily 0} to {\ttfamily 3}. 
 \end{DoxyReturn}
 
@@ -83,7 +82,7 @@ Definition at line 36 of file queue.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_a62f3ee497cfec496d15e0e210dd1ee78}{}\label{queue_8h_a62f3ee497cfec496d15e0e210dd1ee78}
-Fetches priority order, first floor that was ordered that has still not been visited since order. \begin{DoxyReturn}{Returns}
+Fetches priority order, which is the first floor ordered that has still not been visited since order. \begin{DoxyReturn}{Returns}
 floor ranging from {\ttfamily 0} to {\ttfamily 3}. 
 \end{DoxyReturn}
 
@@ -97,9 +96,9 @@ Definition at line 40 of file queue.\+c.
 \item[{int}]{direction}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_a0c362b06a1ece79df2a6617b367fca8f}{}\label{queue_8h_a0c362b06a1ece79df2a6617b367fca8f}
-Check if orders in direction that elevator will stop at. Safety measure. 
+Check if there are orders in direction that elevator will stop at. Safety measure in case elevator should be in a moving state with no orders to stop it. 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em direction} & -\/1 for down, 1 for up. \\
+\mbox{\tt in}  & {\em direction} & {\ttfamily -\/1} for down, {\ttfamily 1} for up. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -107,7 +106,7 @@ Check if orders in direction that elevator will stop at. Safety measure.
 \end{DoxyReturn}
 
 
-Definition at line 92 of file queue.\+c.
+Definition at line 91 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+print\+\_\+orders@{queue\+\_\+print\+\_\+orders}}
 \index{queue\+\_\+print\+\_\+orders@{queue\+\_\+print\+\_\+orders}!queue.\+h@{queue.\+h}}
@@ -116,9 +115,9 @@ Definition at line 92 of file queue.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}{}\label{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}
-Print all orders in nice format in console. 
+Print all orders in nice format to console. For debugging purposes. 
 
-Definition at line 188 of file queue.\+c.
+Definition at line 186 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+reset\+\_\+orders@{queue\+\_\+reset\+\_\+orders}}
 \index{queue\+\_\+reset\+\_\+orders@{queue\+\_\+reset\+\_\+orders}!queue.\+h@{queue.\+h}}
@@ -129,7 +128,7 @@ Definition at line 188 of file queue.\+c.
 )}\hypertarget{queue_8h_afb92094b2527c54ce0c94d9fea708691}{}\label{queue_8h_afb92094b2527c54ce0c94d9fea708691}
 Set all order lists to default state. 
 
-Definition at line 177 of file queue.\+c.
+Definition at line 175 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor@{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor}}
 \index{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor@{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor}!queue.\+h@{queue.\+h}}
@@ -159,5 +158,5 @@ Definition at line 46 of file queue.\+c.
 )}\hypertarget{queue_8h_a9c8ee999898cb642da2cc838de1f2301}{}\label{queue_8h_a9c8ee999898cb642da2cc838de1f2301}
 Iterate buttons and update orders accordingly. 
 
-Definition at line 116 of file queue.\+c.
+Definition at line 115 of file queue.\+c.
 

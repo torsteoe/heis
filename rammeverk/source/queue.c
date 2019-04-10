@@ -7,7 +7,7 @@
 
 const int ORDER_SIZE = 4;
 
-static int previous_floor = -1;
+static int last_floor_visited = -1;
 static int up_orders[ORDER_SIZE]; 
 static int down_orders[ORDER_SIZE]; 
 static int panel_orders[ORDER_SIZE];
@@ -34,7 +34,7 @@ int ** queue_get_orders() {
 
 
 int queue_get_previous_floor() {
-    return previous_floor;
+    return last_floor_visited;
 }
 
 int queue_get_priority_order() {
@@ -66,7 +66,7 @@ int queue_should_I_stop_at_floor(int direction) {
 
 //erases all orders for given floor
 void queue_delete_floor_orders() {
-    int floor = previous_floor;
+    int floor = last_floor_visited;
         
     up_orders[floor] = 0;
     down_orders[floor] = 0;
@@ -93,11 +93,11 @@ int queue_orders_in_direction(int direction) {
 
     for (int priority_idx = 0; priority_idx<ORDER_SIZE; priority_idx++) {
         if (direction == DIRN_DOWN) {
-            for (int floor = 0; floor<previous_floor; floor++) {
+            for (int floor = 0; floor<last_floor_visited; floor++) {
                 orders_exist += (priority_orders[priority_idx]==floor);
             }
         } else {
-            for (int floor = previous_floor+1; floor<ORDER_SIZE; floor++) {
+            for (int floor = last_floor_visited+1; floor<ORDER_SIZE; floor++) {
                 orders_exist += (priority_orders[priority_idx]==floor);
             } 
         }
@@ -116,7 +116,7 @@ void queue_update_orders() {
 
     int current_floor = elev_get_floor_sensor_signal();
     if (current_floor != -1){
-        previous_floor = current_floor;
+        last_floor_visited = current_floor;
     }
     
     m_add_down_orders();

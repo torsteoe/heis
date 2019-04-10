@@ -1,0 +1,14 @@
+/*! \mainpage My Personal Index Page
+ *
+ * \section intro_sec Introduction
+ *
+ * This is the introduction. Welcome to our documentation. 
+ *
+ * \section how_to How to
+ *
+ * \subsection step1 
+ * read documentation
+ * \subsection step2 
+ * close documentation
+ * etc...
+ */

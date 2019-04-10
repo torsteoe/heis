@@ -35,7 +35,7 @@ static int m_orders_exist();
 
 
 int FSM_init() { 
-    
+
 // Initialize hardware
     if (!elev_init()) {
         printf("Unable to initialize elevator hardware!\n");
@@ -70,6 +70,7 @@ void FSM_update_state() {
         
             elev_set_motor_direction(DIRN_STOP);
             doors_change_state(timeout);
+            
             
             
             if (elev_get_stop_signal()) {

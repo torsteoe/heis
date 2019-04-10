@@ -19,9 +19,9 @@ int main() {
     while (1) {
 
         queue_update_orders();
-        lights_update_lights(queue_get_previous_floor(), queue_get_orders()); 
+        
         FSM_update_state();
-
+        lights_update_lights(queue_get_previous_floor(), queue_get_orders()); 
     }
 
     return 0;

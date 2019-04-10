@@ -10,7 +10,7 @@ Implementation file for the lights module.
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{lights_8c_a56c72a2916e6449fa7da22f677abc8f5}{lights\+\_\+update\+\_\+lights} (int previous\+\_\+floor, int $\ast$$\ast$pp\+\_\+orders)
+void \hyperlink{lights_8c_a1759a74eb6e5d937151605b95c974439}{lights\+\_\+update\+\_\+lights} (int last\+\_\+floor\+\_\+visited, int $\ast$$\ast$pp\+\_\+orders)
 \end{DoxyCompactItemize}
 
 
@@ -22,13 +22,20 @@ Implementation file for the lights module.
 \subsection{Function Documentation}
 \index{lights.\+c@{lights.\+c}!lights\+\_\+update\+\_\+lights@{lights\+\_\+update\+\_\+lights}}
 \index{lights\+\_\+update\+\_\+lights@{lights\+\_\+update\+\_\+lights}!lights.\+c@{lights.\+c}}
-\subsubsection[{\texorpdfstring{lights\+\_\+update\+\_\+lights(int previous\+\_\+floor, int $\ast$$\ast$pp\+\_\+orders)}{lights_update_lights(int previous_floor, int **pp_orders)}}]{\setlength{\rightskip}{0pt plus 5cm}void lights\+\_\+update\+\_\+lights (
+\subsubsection[{\texorpdfstring{lights\+\_\+update\+\_\+lights(int last\+\_\+floor\+\_\+visited, int $\ast$$\ast$pp\+\_\+orders)}{lights_update_lights(int last_floor_visited, int **pp_orders)}}]{\setlength{\rightskip}{0pt plus 5cm}void lights\+\_\+update\+\_\+lights (
 \begin{DoxyParamCaption}
-\item[{int}]{previous\+\_\+floor, }
+\item[{int}]{last\+\_\+floor\+\_\+visited, }
 \item[{int $\ast$$\ast$}]{pp\+\_\+orders}
 \end{DoxyParamCaption}
-)}\hypertarget{lights_8c_a56c72a2916e6449fa7da22f677abc8f5}{}\label{lights_8c_a56c72a2916e6449fa7da22f677abc8f5}
+)}\hypertarget{lights_8c_a1759a74eb6e5d937151605b95c974439}{}\label{lights_8c_a1759a74eb6e5d937151605b95c974439}
 Updates all lights except door lamp and stop lamp. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em last\+\_\+floor\+\_\+visited} & floor last visited or current floor if elevator on floor, used to set floor indicator lamp. \\
+\hline
+\mbox{\tt in,out}  & {\em pp\+\_\+orders} & pointer to dynamically allocated array containing all orders. Used to set button lights. Freed at end of function. \\
+\hline
+\end{DoxyParams}
+
 
 Definition at line 13 of file lights.\+c.
 
