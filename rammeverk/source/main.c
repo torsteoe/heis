@@ -13,13 +13,14 @@ int main() {
     };
     
 
-    while (1) {
+    while (!elev_get_obstruction_signal()) {
 
         queue_update_orders();
-        lights_update_lights(); //kan gi int **orders som input parameter her
+        lights_update_lights(queue_get_previous_floor(), queue_get_orders()); //kan gi int **orders som input parameter her
         FSM_update_state();
 
     }
+    free(queue_get_orders());
 
     return 0;
 }

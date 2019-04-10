@@ -6,25 +6,25 @@
 #include "malloc.h"
 //hjelpefunksjoner
 
-static void m_set_floor_indicator_lights();
-static void m_set_order_indicator_lights();
+static void m_set_floor_indicator_lights(int previous_floor);
+static void m_set_order_indicator_lights(int ** pp_orders);
 
 
-void lights_update_lights() {
-    m_set_floor_indicator_lights();
-    m_set_order_indicator_lights();
+void lights_update_lights(int previous_floor, int ** pp_orders) {
+    m_set_floor_indicator_lights(previous_floor);
+    m_set_order_indicator_lights(pp_orders);
 }
 
-void m_set_floor_indicator_lights() {
-    elev_set_floor_indicator(queue_get_previous_floor());
+void m_set_floor_indicator_lights(int previous_floor) {
+    elev_set_floor_indicator(previous_floor);
 }
 
 
-void m_set_order_indicator_lights() {
-    int ** pp_all_orders = queue_get_orders();
-    int * up = pp_all_orders[0];
-    int * down = pp_all_orders[1];
-    int * panel = pp_all_orders[2];
+void m_set_order_indicator_lights(int ** pp_orders) {
+    
+    int * up = pp_orders[0];
+    int * down = pp_orders[1];
+    int * panel = pp_orders[2];
 
     for (int i = 0; i<3; i++) {
         elev_set_button_lamp(BUTTON_CALL_UP, i, up[i]);
@@ -35,6 +35,6 @@ void m_set_order_indicator_lights() {
     for (int i = 0; i<4; i++) {
         elev_set_button_lamp(BUTTON_COMMAND, i, panel[i]);
     }
-    free(pp_all_orders);
-    pp_all_orders = NULL;
+    free(pp_orders);
+    pp_orders = NULL;
 }
