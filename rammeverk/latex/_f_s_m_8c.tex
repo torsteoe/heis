@@ -1,45 +1,46 @@
 \hypertarget{_f_s_m_8c}{}\section{source/\+F\+SM.c File Reference}
-\label{_f_s_m_8c}\index{source/\+F\+S\+M.\+c@{source/\+F\+S\+M.\+c}}
+\label{_f_s_m_8c}\index{source/FSM.c@{source/FSM.c}}
 
 
 Implementation file for the state machine module.  
 
 
-{\ttfamily \#include \char`\"{}F\+S\+M.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}F\+S\+M.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum S\+T\+A\+T\+ES {\bfseries state}\hypertarget{_f_s_m_8c_ad02d84dcc950c5ba2775a472376427c7}{}\label{_f_s_m_8c_ad02d84dcc950c5ba2775a472376427c7}
-
+\mbox{\Hypertarget{_f_s_m_8c_ad02d84dcc950c5ba2775a472376427c7}\label{_f_s_m_8c_ad02d84dcc950c5ba2775a472376427c7}} 
+typedef enum S\+T\+A\+T\+ES {\bfseries state}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries S\+T\+A\+T\+ES} \{ \\*
+\mbox{\Hypertarget{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}\label{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}} 
+enum {\bfseries S\+T\+A\+T\+ES} \{ \newline
 {\bfseries N\+O\+T\+M\+O\+V\+I\+N\+G\+A\+T\+F\+L\+O\+OR}, 
 {\bfseries M\+O\+V\+I\+N\+G\+D\+O\+WN}, 
 {\bfseries M\+O\+V\+I\+N\+G\+UP}, 
 {\bfseries S\+T\+O\+P\+S\+T\+A\+TE}, 
-\\*
+\newline
 {\bfseries N\+O\+T\+M\+O\+V\+I\+N\+G\+M\+I\+D\+D\+LE}
- \}\hypertarget{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}{}\label{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}
-
+ \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_f_s_m_8c_a4bc68d2016b4febdd4e10280d44fc00a}{F\+S\+M\+\_\+init} ()
+int \mbox{\hyperlink{_f_s_m_8c_a48e99c047b0c13aec82a17eff3de58c5}{F\+S\+M\+\_\+init}} ()
 \item 
-int \hyperlink{_f_s_m_8c_a498b506458b868cb8b9c7df817da7f05}{F\+S\+M\+\_\+get\+\_\+state} ()
+int \mbox{\hyperlink{_f_s_m_8c_a498b506458b868cb8b9c7df817da7f05}{F\+S\+M\+\_\+get\+\_\+state}} ()
 \item 
-void \hyperlink{_f_s_m_8c_a3f2acdae5e4fe54a200c56936c6d66e2}{F\+S\+M\+\_\+change\+State} ()
+void \mbox{\hyperlink{_f_s_m_8c_a304836ec047ed724b16b976249aca1f1}{F\+S\+M\+\_\+update\+\_\+state}} ()
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-int {\bfseries timeout}\hypertarget{_f_s_m_8c_a493b57f443cc38b3d3df9c1e584d9d82}{}\label{_f_s_m_8c_a493b57f443cc38b3d3df9c1e584d9d82}
-
+\mbox{\Hypertarget{_f_s_m_8c_a493b57f443cc38b3d3df9c1e584d9d82}\label{_f_s_m_8c_a493b57f443cc38b3d3df9c1e584d9d82}} 
+int {\bfseries timeout}
 \end{DoxyCompactItemize}
 
 
@@ -49,39 +50,36 @@ Implementation file for the state machine module.
 
 
 \subsection{Function Documentation}
-\index{F\+S\+M.\+c@{F\+S\+M.\+c}!F\+S\+M\+\_\+change\+State@{F\+S\+M\+\_\+change\+State}}
-\index{F\+S\+M\+\_\+change\+State@{F\+S\+M\+\_\+change\+State}!F\+S\+M.\+c@{F\+S\+M.\+c}}
-\subsubsection[{\texorpdfstring{F\+S\+M\+\_\+change\+State()}{FSM_changeState()}}]{\setlength{\rightskip}{0pt plus 5cm}void F\+S\+M\+\_\+change\+State (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{_f_s_m_8c_a3f2acdae5e4fe54a200c56936c6d66e2}{}\label{_f_s_m_8c_a3f2acdae5e4fe54a200c56936c6d66e2}
-Perform action based on what state one is in. Change state if required. 
+\mbox{\Hypertarget{_f_s_m_8c_a498b506458b868cb8b9c7df817da7f05}\label{_f_s_m_8c_a498b506458b868cb8b9c7df817da7f05}} 
+\index{FSM.c@{FSM.c}!FSM\_get\_state@{FSM\_get\_state}}
+\index{FSM\_get\_state@{FSM\_get\_state}!FSM.c@{FSM.c}}
+\subsubsection{\texorpdfstring{FSM\_get\_state()}{FSM\_get\_state()}}
+{\footnotesize\ttfamily int F\+S\+M\+\_\+get\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Definition at line 51 of file F\+S\+M.\+c.
-
-\index{F\+S\+M.\+c@{F\+S\+M.\+c}!F\+S\+M\+\_\+get\+\_\+state@{F\+S\+M\+\_\+get\+\_\+state}}
-\index{F\+S\+M\+\_\+get\+\_\+state@{F\+S\+M\+\_\+get\+\_\+state}!F\+S\+M.\+c@{F\+S\+M.\+c}}
-\subsubsection[{\texorpdfstring{F\+S\+M\+\_\+get\+\_\+state()}{FSM_get_state()}}]{\setlength{\rightskip}{0pt plus 5cm}int F\+S\+M\+\_\+get\+\_\+state (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{_f_s_m_8c_a498b506458b868cb8b9c7df817da7f05}{}\label{_f_s_m_8c_a498b506458b868cb8b9c7df817da7f05}
 Initialize elevator. \begin{DoxyReturn}{Returns}
-{\ttfamily int} ranging from {\ttfamily 0} to {\ttfamily 4} based on state. 
+{\ttfamily 0} to {\ttfamily 4} based on current state. 
 \end{DoxyReturn}
 
 
-Definition at line 46 of file F\+S\+M.\+c.
+Definition at line 57 of file F\+S\+M.\+c.
 
-\index{F\+S\+M.\+c@{F\+S\+M.\+c}!F\+S\+M\+\_\+init@{F\+S\+M\+\_\+init}}
-\index{F\+S\+M\+\_\+init@{F\+S\+M\+\_\+init}!F\+S\+M.\+c@{F\+S\+M.\+c}}
-\subsubsection[{\texorpdfstring{F\+S\+M\+\_\+init()}{FSM_init()}}]{\setlength{\rightskip}{0pt plus 5cm}void F\+S\+M\+\_\+init (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{_f_s_m_8c_a4bc68d2016b4febdd4e10280d44fc00a}{}\label{_f_s_m_8c_a4bc68d2016b4febdd4e10280d44fc00a}
+\mbox{\Hypertarget{_f_s_m_8c_a48e99c047b0c13aec82a17eff3de58c5}\label{_f_s_m_8c_a48e99c047b0c13aec82a17eff3de58c5}} 
+\index{FSM.c@{FSM.c}!FSM\_init@{FSM\_init}}
+\index{FSM\_init@{FSM\_init}!FSM.c@{FSM.c}}
+\subsubsection{\texorpdfstring{FSM\_init()}{FSM\_init()}}
+{\footnotesize\ttfamily int F\+S\+M\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 Initialize elevator. 
 
-Definition at line 30 of file F\+S\+M.\+c.
+Definition at line 31 of file F\+S\+M.\+c.
+
+\mbox{\Hypertarget{_f_s_m_8c_a304836ec047ed724b16b976249aca1f1}\label{_f_s_m_8c_a304836ec047ed724b16b976249aca1f1}} 
+\index{FSM.c@{FSM.c}!FSM\_update\_state@{FSM\_update\_state}}
+\index{FSM\_update\_state@{FSM\_update\_state}!FSM.c@{FSM.c}}
+\subsubsection{\texorpdfstring{FSM\_update\_state()}{FSM\_update\_state()}}
+{\footnotesize\ttfamily void F\+S\+M\+\_\+update\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Perform action based on what state one is in. Change state if required. 
+
+Definition at line 62 of file F\+S\+M.\+c.
 

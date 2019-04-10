@@ -3,7 +3,7 @@
  * @brief Implementation file for the queue module.
  */
 #include "queue.h"
-
+#include "malloc.h"
 
 const int ORDER_SIZE = 4;
 
@@ -21,17 +21,23 @@ static void m_add_panel_orders();
 static void m_add_priority_orders(int floor);
 
 
-void queue_set_previous_floor(int current_floor) {
-    if (current_floor != -1){
-        previous_floor = current_floor;
-    }
+
+
+int ** queue_get_orders() {
+    int ** pp_orders = (int **) malloc(3*sizeof(up_orders));
+    pp_orders[0] = up_orders;
+    pp_orders[1] = down_orders;
+    pp_orders[2] = panel_orders;
+    return pp_orders;
 }
+
+
 
 int queue_get_previous_floor() {
     return previous_floor;
 }
 
-int * queue_get_up_orders() {
+/* int * queue_get_up_orders() {
     return up_orders;
 }
 int * queue_get_down_orders() {
@@ -40,27 +46,30 @@ int * queue_get_down_orders() {
 
 int * queue_get_panel_orders() {
     return panel_orders;
-}
+} */
 int queue_get_priority_order() {
     return priority_orders[0];
 }
 
 //Returns 1 if one must stop, returns 0 otherwise;
-//direction: 0 is down, 1 is up, 2 is both will be checked : replace this with DIRN_DOWN and DIRN_UP if possible?
+//direction: -1 is down, 1 is up.
 int queue_should_I_stop_at_floor(int direction) {
-    int floor = previous_floor;
+    int floor = elev_get_floor_sensor_signal();
+
+    if (floor == -1) {
+        return 0;
+    }
+
     if (priority_orders[0] == floor) {
         return 1;
     }
     if (direction==-1) { //direction is down
         return (down_orders[floor] || panel_orders[floor]); 
     }
-    else if (direction==1) { //direction is up
+    else  { //direction is up
         return (up_orders[floor] || panel_orders[floor]);
     }
-    else { //checks in both directions
-        return (down_orders[floor] || up_orders[floor] || panel_orders[floor]);
-    }
+    
     
 }
 
@@ -118,6 +127,12 @@ int queue_orders_in_direction(int direction) {
 
 
 void queue_update_orders() {
+
+    int current_floor = elev_get_floor_sensor_signal();
+    if (current_floor != -1){
+        previous_floor = current_floor;
+    }
+    
     m_add_down_orders();
     m_add_up_orders();
     m_add_panel_orders();
