@@ -160,7 +160,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fetches array of order_lists. </p><dl class="section return"><dt>Returns</dt><dd>int ** array of pointers to the different order lists. </dd></dl>
+<p>Fetches array of order_lists. </p><dl class="section return"><dt>Returns</dt><dd>pointer to dynamically allocated array containing all orders. </dd></dl>
 
 <p>Definition at line <a class="el" href="queue_8c_source.html#l00026">26</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
@@ -178,7 +178,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fetches previous floor. </p><dl class="section return"><dt>Returns</dt><dd>floor ranging from <code>0</code> to <code>3</code>. </dd></dl>
+<p>Fetches previous or current floor if elevator on floor. </p><dl class="section return"><dt>Returns</dt><dd>floor ranging from <code>0</code> to <code>3</code>. </dd></dl>
 
 <p>Definition at line <a class="el" href="queue_8c_source.html#l00036">36</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
@@ -196,7 +196,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fetches priority order, first floor that was ordered that has still not been visited since order. </p><dl class="section return"><dt>Returns</dt><dd>floor ranging from <code>0</code> to <code>3</code>. </dd></dl>
+<p>Fetches priority order, which is the first floor ordered that has still not been visited since order. </p><dl class="section return"><dt>Returns</dt><dd>floor ranging from <code>0</code> to <code>3</code>. </dd></dl>
 
 <p>Definition at line <a class="el" href="queue_8c_source.html#l00040">40</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
@@ -215,15 +215,15 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if orders in direction that elevator will stop at. Safety measure. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Check if there are orders in direction that elevator will stop at. Safety measure in case elevator should be in a moving state with no orders to stop it. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">direction</td><td>-1 for down, 1 for up. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">direction</td><td><code>-1</code> for down, <code>1</code> for up. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> to signal orders exist, <code>0</code> to signal no orders. </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00092">92</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00091">91</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -239,9 +239,9 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Print all orders in nice format in console. </p>
+<p>Print all orders in nice format to console. For debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00188">188</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00186">186</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -259,7 +259,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
 </div><div class="memdoc">
 <p>Set all order lists to default state. </p>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00177">177</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00175">175</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -302,7 +302,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
 </div><div class="memdoc">
 <p>Iterate buttons and update orders accordingly. </p>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00116">116</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00115">115</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>

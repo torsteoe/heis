@@ -90,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A simple library for doing operations on lights buffers consisting of integers.  
+<p>A simple library for doing operations on lights.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="elev_8h_source.html">elev.h</a>&quot;</code><br />
 </div>
@@ -98,15 +98,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a56c72a2916e6449fa7da22f677abc8f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lights_8h.html#a56c72a2916e6449fa7da22f677abc8f5">lights_update_lights</a> (int previous_floor, int **pp_orders)</td></tr>
-<tr class="separator:a56c72a2916e6449fa7da22f677abc8f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1759a74eb6e5d937151605b95c974439"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lights_8h.html#a1759a74eb6e5d937151605b95c974439">lights_update_lights</a> (int last_floor_visited, int **pp_orders)</td></tr>
+<tr class="separator:a1759a74eb6e5d937151605b95c974439"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A simple library for doing operations on lights buffers consisting of integers. </p>
+<div class="textblock"><p>A simple library for doing operations on lights. </p>
 
 <p>Definition in file <a class="el" href="lights_8h_source.html">lights.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a56c72a2916e6449fa7da22f677abc8f5"></a>
+<a class="anchor" id="a1759a74eb6e5d937151605b95c974439"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -114,7 +114,7 @@ Functions</h2></td></tr>
           <td class="memname">void lights_update_lights </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>previous_floor</em>, </td>
+          <td class="paramname"><em>last_floor_visited</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -129,7 +129,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Updates all lights except door lamp and stop lamp. </p>
+<p>Updates all lights except door lamp and stop lamp. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">last_floor_visited</td><td>floor last visited or current floor if elevator on floor, used to set floor indicator lamp. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pp_orders</td><td>pointer to dynamically allocated array containing all orders. Used to set button lights. Freed at end of function. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Definition at line <a class="el" href="lights_8c_source.html#l00013">13</a> of file <a class="el" href="lights_8c_source.html">lights.c</a>.</p>
 
