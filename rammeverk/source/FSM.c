@@ -6,24 +6,26 @@
 #include "stdlib.h"
 #include <stdio.h>
 
-
 /**
   States for the state machine.
 */
 typedef enum STATES {
-    //INIT, //maybe superfluous
     NOTMOVINGATFLOOR, 
     MOVINGDOWN,
     MOVINGUP,
     STOPSTATE,
-    NOTMOVINGMIDDLE //mellom etasjer
+    NOTMOVINGMIDDLE //mellom etasjer i ro.
 } state;
 
+
 static state now_state = NOTMOVINGMIDDLE;
+
+
+
 static elev_motor_direction_t previous_direction; //-1 for down, 1 for up
 
 
-//hjelpefunksjoner
+//helper functions
 
 static int m_ordered_to_same_floor();
 static int m_ordered_up();
@@ -33,6 +35,7 @@ static int m_orders_exist();
 
 
 int FSM_init() { 
+    
 // Initialize hardware
     if (!elev_init()) {
         printf("Unable to initialize elevator hardware!\n");

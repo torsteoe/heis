@@ -14,7 +14,7 @@ static int panel_orders[ORDER_SIZE];
 static int priority_orders[ORDER_SIZE]; //default -1 
 
 
-//hjelpefunksjoner
+//helper functions
 static void m_add_up_orders();
 static void m_add_down_orders();
 static void m_add_panel_orders();
@@ -67,14 +67,13 @@ int queue_should_I_stop_at_floor(int direction) {
 //erases all orders for given floor
 void queue_delete_floor_orders() {
     int floor = previous_floor;
-    assert(floor<4 && floor >= 0);
         
     up_orders[floor] = 0;
     down_orders[floor] = 0;
     panel_orders[floor] = 0;
     
     //iterates priority_orders:
-        //if floor in priority_orders all other floors are moved one spot up in priority.
+    //if floor in priority_orders all other floors are moved one spot up in priority.
     for (int i = 0; i<ORDER_SIZE; i++) {
         if (priority_orders[i] == floor) {
             for (int idx = i; idx<ORDER_SIZE-1; idx++) {
@@ -157,7 +156,6 @@ void m_add_panel_orders() {
 
 //receives a floor, checks if in list, adds if not.
 void m_add_priority_orders(int floor) {
-    assert(floor<4 &&floor >= 0);
     //go through priority_orders
     //break if floor in list
     //add if -1, then break

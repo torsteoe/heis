@@ -14,7 +14,7 @@
 void timer_start();
 
 /**
-  Check if timer is out.
+  Check if time passed since timer was reset is more than 3 seconds.
   @return @c 1 if timer is out, @c 0 otherwise.
 */
 int timer_expired();

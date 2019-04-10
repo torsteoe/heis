@@ -3,7 +3,7 @@
  * @brief Implementation file for the timer module.
  */
 #include "timer.h"
-const double SECONDS = 3; //change to three
+const double SECONDS = 3;
 static clock_t clock_var;
 
 void timer_start() {

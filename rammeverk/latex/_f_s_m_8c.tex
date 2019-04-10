@@ -8,23 +8,6 @@ Implementation file for the state machine module.
 {\ttfamily \#include \char`\"{}F\+S\+M.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
-\subsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef enum \hyperlink{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}{S\+T\+A\+T\+ES} \hyperlink{_f_s_m_8c_ad02d84dcc950c5ba2775a472376427c7}{state}
-\end{DoxyCompactItemize}
-\subsection*{Enumerations}
-\begin{DoxyCompactItemize}
-\item 
-enum \hyperlink{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}{S\+T\+A\+T\+ES} \{ \\*
-{\bfseries N\+O\+T\+M\+O\+V\+I\+N\+G\+A\+T\+F\+L\+O\+OR}, 
-{\bfseries M\+O\+V\+I\+N\+G\+D\+O\+WN}, 
-{\bfseries M\+O\+V\+I\+N\+G\+UP}, 
-{\bfseries S\+T\+O\+P\+S\+T\+A\+TE}, 
-\\*
-{\bfseries N\+O\+T\+M\+O\+V\+I\+N\+G\+M\+I\+D\+D\+LE}
- \}
-\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,22 +28,6 @@ Implementation file for the state machine module.
 
 
 
-\subsection{Typedef Documentation}
-\index{F\+S\+M.\+c@{F\+S\+M.\+c}!state@{state}}
-\index{state@{state}!F\+S\+M.\+c@{F\+S\+M.\+c}}
-\subsubsection[{\texorpdfstring{state}{state}}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf S\+T\+A\+T\+ES}  {\bf state}}\hypertarget{_f_s_m_8c_ad02d84dcc950c5ba2775a472376427c7}{}\label{_f_s_m_8c_ad02d84dcc950c5ba2775a472376427c7}
-States for the state machine. 
-
-\subsection{Enumeration Type Documentation}
-\index{F\+S\+M.\+c@{F\+S\+M.\+c}!S\+T\+A\+T\+ES@{S\+T\+A\+T\+ES}}
-\index{S\+T\+A\+T\+ES@{S\+T\+A\+T\+ES}!F\+S\+M.\+c@{F\+S\+M.\+c}}
-\subsubsection[{\texorpdfstring{S\+T\+A\+T\+ES}{STATES}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf S\+T\+A\+T\+ES}}\hypertarget{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}{}\label{_f_s_m_8c_a94b1da2e055fff4d143aa6aa891f79a9}
-States for the state machine. 
-
-Definition at line 13 of file F\+S\+M.\+c.
-
-
-
 \subsection{Function Documentation}
 \index{F\+S\+M.\+c@{F\+S\+M.\+c}!F\+S\+M\+\_\+init@{F\+S\+M\+\_\+init}}
 \index{F\+S\+M\+\_\+init@{F\+S\+M\+\_\+init}!F\+S\+M.\+c@{F\+S\+M.\+c}}
@@ -69,12 +36,12 @@ Definition at line 13 of file F\+S\+M.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{_f_s_m_8c_a48e99c047b0c13aec82a17eff3de58c5}{}\label{_f_s_m_8c_a48e99c047b0c13aec82a17eff3de58c5}
-Initialize elevator. \begin{DoxyReturn}{Returns}
+Initialize elevator\+: Starts timer, initializes orders and moves elevator to initial position. \begin{DoxyReturn}{Returns}
 {\ttfamily 1} on success, {\ttfamily 0} if failed initiation. 
 \end{DoxyReturn}
 
 
-Definition at line 35 of file F\+S\+M.\+c.
+Definition at line 24 of file F\+S\+M.\+c.
 
 \index{F\+S\+M.\+c@{F\+S\+M.\+c}!F\+S\+M\+\_\+update\+\_\+state@{F\+S\+M\+\_\+update\+\_\+state}}
 \index{F\+S\+M\+\_\+update\+\_\+state@{F\+S\+M\+\_\+update\+\_\+state}!F\+S\+M.\+c@{F\+S\+M.\+c}}
@@ -83,7 +50,12 @@ Definition at line 35 of file F\+S\+M.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{_f_s_m_8c_a304836ec047ed724b16b976249aca1f1}{}\label{_f_s_m_8c_a304836ec047ed724b16b976249aca1f1}
-Perform action based on what state one is in. Change state if required. 
+Perform action based on what state the elevator is in. Change 
+\begin{DoxyParams}{Parameters}
+{\em now\+\_\+state} & if required. \\
+\hline
+\end{DoxyParams}
 
-Definition at line 60 of file F\+S\+M.\+c.
+
+Definition at line 49 of file F\+S\+M.\+c.
 

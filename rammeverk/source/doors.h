@@ -11,7 +11,7 @@
 
 /**
   Change state of doors (open/closed).
-  @param[in] close 1 to close door, 0 to open.
+  @param[in] close @c 1 to close door, @c 0 to open.
 */
 void doors_change_state(int close);
 

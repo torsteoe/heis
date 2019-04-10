@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Implementation file for the Input/Output module interfacing with libComedi.
+ * @brief Implementation file for the Input/Output module providing and interfacing to libComedi.
  */
 // Wrapper for libComedi I/O.
 // These functions provide and interface to libComedi limited to use in

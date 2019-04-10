@@ -84,8 +84,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -101,24 +99,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p><a href="_f_s_m_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ad02d84dcc950c5ba2775a472376427c7"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="_f_s_m_8c.html#a94b1da2e055fff4d143aa6aa891f79a9">STATES</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_s_m_8c.html#ad02d84dcc950c5ba2775a472376427c7">state</a></td></tr>
-<tr class="separator:ad02d84dcc950c5ba2775a472376427c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a94b1da2e055fff4d143aa6aa891f79a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_s_m_8c.html#a94b1da2e055fff4d143aa6aa891f79a9">STATES</a> { <br />
-&#160;&#160;<b>NOTMOVINGATFLOOR</b>, 
-<b>MOVINGDOWN</b>, 
-<b>MOVINGUP</b>, 
-<b>STOPSTATE</b>, 
-<br />
-&#160;&#160;<b>NOTMOVINGMIDDLE</b>
-<br />
- }</td></tr>
-<tr class="separator:a94b1da2e055fff4d143aa6aa891f79a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a48e99c047b0c13aec82a17eff3de58c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_s_m_8c.html#a48e99c047b0c13aec82a17eff3de58c5">FSM_init</a> ()</td></tr>
@@ -136,37 +116,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>timeout</b></td></tr>
 <div class="textblock"><p>Implementation file for the state machine module. </p>
 
 <p>Definition in file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="ad02d84dcc950c5ba2775a472376427c7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef enum <a class="el" href="_f_s_m_8c.html#a94b1da2e055fff4d143aa6aa891f79a9">STATES</a>  <a class="el" href="_f_s_m_8c.html#ad02d84dcc950c5ba2775a472376427c7">state</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>States for the state machine. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="a94b1da2e055fff4d143aa6aa891f79a9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="_f_s_m_8c.html#a94b1da2e055fff4d143aa6aa891f79a9">STATES</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>States for the state machine. </p>
-
-<p>Definition at line <a class="el" href="_f_s_m_8c_source.html#l00013">13</a> of file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a48e99c047b0c13aec82a17eff3de58c5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -179,9 +129,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>timeout</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialize elevator. </p><dl class="section return"><dt>Returns</dt><dd><code>1</code> on success, <code>0</code> if failed initiation. </dd></dl>
+<p>Initialize elevator: Starts timer, initializes orders and moves elevator to initial position. </p><dl class="section return"><dt>Returns</dt><dd><code>1</code> on success, <code>0</code> if failed initiation. </dd></dl>
 
-<p>Definition at line <a class="el" href="_f_s_m_8c_source.html#l00035">35</a> of file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
+<p>Definition at line <a class="el" href="_f_s_m_8c_source.html#l00024">24</a> of file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
 
 </div>
 </div>
@@ -197,9 +147,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>timeout</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Perform action based on what state one is in. Change state if required. </p>
+<p>Perform action based on what state the elevator is in. Change </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">now_state</td><td>if required. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_f_s_m_8c_source.html#l00060">60</a> of file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
+<p>Definition at line <a class="el" href="_f_s_m_8c_source.html#l00049">49</a> of file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
 
 </div>
 </div>
