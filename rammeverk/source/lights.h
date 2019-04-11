@@ -17,7 +17,4 @@
 void lights_update_lights(int last_floor_visited, int ** pp_orders);
 
 
-
-
-
 #endif //#ifndef LIGHTS_H__

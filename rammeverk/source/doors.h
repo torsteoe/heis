@@ -9,6 +9,11 @@
 
 #include "elev.h"
 
+
+//////////////////////////////
+////      FUNCTIONS       ////
+//////////////////////////////
+
 /**
   @brief Change state of doors (open/closed).
   @param[in] close @c 1 to close door, @c 0 to open.
