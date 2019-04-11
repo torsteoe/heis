@@ -13,9 +13,10 @@ A library for managing the state machine.
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{_f_s_m_8h_a48e99c047b0c13aec82a17eff3de58c5}{F\+S\+M\+\_\+init} ()
-\item 
-void \hyperlink{_f_s_m_8h_a304836ec047ed724b16b976249aca1f1}{F\+S\+M\+\_\+update\+\_\+state} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initialize elevator\+: Starts timer, initializes orders and moves elevator to initial position. \end{DoxyCompactList}\item 
+void \hyperlink{_f_s_m_8h_a304836ec047ed724b16b976249aca1f1}{F\+S\+M\+\_\+update\+\_\+state} ()\hypertarget{_f_s_m_8h_a304836ec047ed724b16b976249aca1f1}{}\label{_f_s_m_8h_a304836ec047ed724b16b976249aca1f1}
+
+\begin{DoxyCompactList}\small\item\em Perform action based on what state the elevator is in. Change state if required by \hyperlink{elev_8h}{elev.\+h} or \hyperlink{queue_8h}{queue.\+h}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -31,21 +32,14 @@ A library for managing the state machine.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{_f_s_m_8h_a48e99c047b0c13aec82a17eff3de58c5}{}\label{_f_s_m_8h_a48e99c047b0c13aec82a17eff3de58c5}
-Initialize elevator\+: Starts timer, initializes orders and moves elevator to initial position. \begin{DoxyReturn}{Returns}
+
+
+Initialize elevator\+: Starts timer, initializes orders and moves elevator to initial position. 
+
+\begin{DoxyReturn}{Returns}
 {\ttfamily 1} on success, {\ttfamily 0} if failed initiation. 
 \end{DoxyReturn}
 
 
 Definition at line 37 of file F\+S\+M.\+c.
-
-\index{F\+S\+M.\+h@{F\+S\+M.\+h}!F\+S\+M\+\_\+update\+\_\+state@{F\+S\+M\+\_\+update\+\_\+state}}
-\index{F\+S\+M\+\_\+update\+\_\+state@{F\+S\+M\+\_\+update\+\_\+state}!F\+S\+M.\+h@{F\+S\+M.\+h}}
-\subsubsection[{\texorpdfstring{F\+S\+M\+\_\+update\+\_\+state()}{FSM_update_state()}}]{\setlength{\rightskip}{0pt plus 5cm}void F\+S\+M\+\_\+update\+\_\+state (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{_f_s_m_8h_a304836ec047ed724b16b976249aca1f1}{}\label{_f_s_m_8h_a304836ec047ed724b16b976249aca1f1}
-Perform action based on what state the elevator is in. Change state if required by \hyperlink{elev_8h}{elev.\+h} or \hyperlink{queue_8h}{queue.\+h}. 
-
-Definition at line 63 of file F\+S\+M.\+c.
 

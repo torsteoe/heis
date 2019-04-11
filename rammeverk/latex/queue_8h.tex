@@ -11,23 +11,27 @@ A library for accessing queues and doing operations on queue.
 \begin{DoxyCompactItemize}
 \item 
 int $\ast$$\ast$ \hyperlink{queue_8h_a9099e4c8298049220ba24a7ed21d6b1c}{queue\+\_\+get\+\_\+orders} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Fetches array of order\+\_\+lists. \end{DoxyCompactList}\item 
 int \hyperlink{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}{queue\+\_\+get\+\_\+previous\+\_\+floor} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Fetches previous or current floor if elevator on floor. \end{DoxyCompactList}\item 
 int \hyperlink{queue_8h_a62f3ee497cfec496d15e0e210dd1ee78}{queue\+\_\+get\+\_\+priority\+\_\+order} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Fetches priority order, which is the first floor ordered that has still not been visited since order. \end{DoxyCompactList}\item 
 int \hyperlink{queue_8h_aabdac24759b543e67fe5cf6938e84d9f}{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor} (int direction)
-\item 
-void \hyperlink{queue_8h_ad11c327ee856d320e7e4741a777505d2}{queue\+\_\+delete\+\_\+floor\+\_\+orders} ()
-\item 
-void \hyperlink{queue_8h_a9c8ee999898cb642da2cc838de1f2301}{queue\+\_\+update\+\_\+orders} ()
-\item 
-void \hyperlink{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}{queue\+\_\+print\+\_\+orders} ()
-\item 
-void \hyperlink{queue_8h_afb92094b2527c54ce0c94d9fea708691}{queue\+\_\+reset\+\_\+orders} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Check if elevator should stop at floor. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8h_ad11c327ee856d320e7e4741a777505d2}{queue\+\_\+delete\+\_\+floor\+\_\+orders} ()\hypertarget{queue_8h_ad11c327ee856d320e7e4741a777505d2}{}\label{queue_8h_ad11c327ee856d320e7e4741a777505d2}
+
+\begin{DoxyCompactList}\small\item\em Delete orders at current floor. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8h_a9c8ee999898cb642da2cc838de1f2301}{queue\+\_\+update\+\_\+orders} ()\hypertarget{queue_8h_a9c8ee999898cb642da2cc838de1f2301}{}\label{queue_8h_a9c8ee999898cb642da2cc838de1f2301}
+
+\begin{DoxyCompactList}\small\item\em Iterate buttons and update orders accordingly. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}{queue\+\_\+print\+\_\+orders} ()\hypertarget{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}{}\label{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}
+
+\begin{DoxyCompactList}\small\item\em Print all orders in nice format to console. For debugging purposes. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8h_afb92094b2527c54ce0c94d9fea708691}{queue\+\_\+reset\+\_\+orders} ()\hypertarget{queue_8h_afb92094b2527c54ce0c94d9fea708691}{}\label{queue_8h_afb92094b2527c54ce0c94d9fea708691}
+
+\begin{DoxyCompactList}\small\item\em Set all order lists to default state. \end{DoxyCompactList}\item 
 int \hyperlink{queue_8h_a0c362b06a1ece79df2a6617b367fca8f}{queue\+\_\+orders\+\_\+in\+\_\+direction} (int direction)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if there are orders in direction that elevator will stop at. Safety measure in case elevator should be in a moving state with no orders to stop it. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -36,17 +40,6 @@ A library for accessing queues and doing operations on queue.
 
 
 \subsection{Function Documentation}
-\index{queue.\+h@{queue.\+h}!queue\+\_\+delete\+\_\+floor\+\_\+orders@{queue\+\_\+delete\+\_\+floor\+\_\+orders}}
-\index{queue\+\_\+delete\+\_\+floor\+\_\+orders@{queue\+\_\+delete\+\_\+floor\+\_\+orders}!queue.\+h@{queue.\+h}}
-\subsubsection[{\texorpdfstring{queue\+\_\+delete\+\_\+floor\+\_\+orders()}{queue_delete_floor_orders()}}]{\setlength{\rightskip}{0pt plus 5cm}void queue\+\_\+delete\+\_\+floor\+\_\+orders (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{queue_8h_ad11c327ee856d320e7e4741a777505d2}{}\label{queue_8h_ad11c327ee856d320e7e4741a777505d2}
-Delete orders at current floor. 
-
-Definition at line 68 of file queue.\+c.
-
 \index{queue.\+h@{queue.\+h}!queue\+\_\+get\+\_\+orders@{queue\+\_\+get\+\_\+orders}}
 \index{queue\+\_\+get\+\_\+orders@{queue\+\_\+get\+\_\+orders}!queue.\+h@{queue.\+h}}
 \subsubsection[{\texorpdfstring{queue\+\_\+get\+\_\+orders()}{queue_get_orders()}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$$\ast$ queue\+\_\+get\+\_\+orders (
@@ -54,7 +47,11 @@ Definition at line 68 of file queue.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_a9099e4c8298049220ba24a7ed21d6b1c}{}\label{queue_8h_a9099e4c8298049220ba24a7ed21d6b1c}
-Fetches array of order\+\_\+lists. \begin{DoxyReturn}{Returns}
+
+
+Fetches array of order\+\_\+lists. 
+
+\begin{DoxyReturn}{Returns}
 pointer to dynamically allocated array containing all orders. 
 \end{DoxyReturn}
 
@@ -68,7 +65,11 @@ Definition at line 26 of file queue.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}{}\label{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}
-Fetches previous or current floor if elevator on floor. \begin{DoxyReturn}{Returns}
+
+
+Fetches previous or current floor if elevator on floor. 
+
+\begin{DoxyReturn}{Returns}
 floor ranging from {\ttfamily 0} to {\ttfamily 3}. 
 \end{DoxyReturn}
 
@@ -82,7 +83,11 @@ Definition at line 36 of file queue.\+c.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_a62f3ee497cfec496d15e0e210dd1ee78}{}\label{queue_8h_a62f3ee497cfec496d15e0e210dd1ee78}
-Fetches priority order, which is the first floor ordered that has still not been visited since order. \begin{DoxyReturn}{Returns}
+
+
+Fetches priority order, which is the first floor ordered that has still not been visited since order. 
+
+\begin{DoxyReturn}{Returns}
 floor ranging from {\ttfamily 0} to {\ttfamily 3}. 
 \end{DoxyReturn}
 
@@ -96,7 +101,11 @@ Definition at line 40 of file queue.\+c.
 \item[{int}]{direction}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_a0c362b06a1ece79df2a6617b367fca8f}{}\label{queue_8h_a0c362b06a1ece79df2a6617b367fca8f}
+
+
 Check if there are orders in direction that elevator will stop at. Safety measure in case elevator should be in a moving state with no orders to stop it. 
+
+
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em direction} & {\ttfamily -\/1} for down, {\ttfamily 1} for up. \\
 \hline
@@ -108,28 +117,6 @@ Check if there are orders in direction that elevator will stop at. Safety measur
 
 Definition at line 91 of file queue.\+c.
 
-\index{queue.\+h@{queue.\+h}!queue\+\_\+print\+\_\+orders@{queue\+\_\+print\+\_\+orders}}
-\index{queue\+\_\+print\+\_\+orders@{queue\+\_\+print\+\_\+orders}!queue.\+h@{queue.\+h}}
-\subsubsection[{\texorpdfstring{queue\+\_\+print\+\_\+orders()}{queue_print_orders()}}]{\setlength{\rightskip}{0pt plus 5cm}void queue\+\_\+print\+\_\+orders (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}{}\label{queue_8h_ab509c47eb8f2833868d725bfc3f08c6e}
-Print all orders in nice format to console. For debugging purposes. 
-
-Definition at line 186 of file queue.\+c.
-
-\index{queue.\+h@{queue.\+h}!queue\+\_\+reset\+\_\+orders@{queue\+\_\+reset\+\_\+orders}}
-\index{queue\+\_\+reset\+\_\+orders@{queue\+\_\+reset\+\_\+orders}!queue.\+h@{queue.\+h}}
-\subsubsection[{\texorpdfstring{queue\+\_\+reset\+\_\+orders()}{queue_reset_orders()}}]{\setlength{\rightskip}{0pt plus 5cm}void queue\+\_\+reset\+\_\+orders (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{queue_8h_afb92094b2527c54ce0c94d9fea708691}{}\label{queue_8h_afb92094b2527c54ce0c94d9fea708691}
-Set all order lists to default state. 
-
-Definition at line 175 of file queue.\+c.
-
 \index{queue.\+h@{queue.\+h}!queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor@{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor}}
 \index{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor@{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor}!queue.\+h@{queue.\+h}}
 \subsubsection[{\texorpdfstring{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor(int direction)}{queue_should_I_stop_at_floor(int direction)}}]{\setlength{\rightskip}{0pt plus 5cm}int queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor (
@@ -137,7 +124,11 @@ Definition at line 175 of file queue.\+c.
 \item[{int}]{direction}
 \end{DoxyParamCaption}
 )}\hypertarget{queue_8h_aabdac24759b543e67fe5cf6938e84d9f}{}\label{queue_8h_aabdac24759b543e67fe5cf6938e84d9f}
+
+
 Check if elevator should stop at floor. 
+
+
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em direction} & -\/1 for down, 1 for up. \\
 \hline
@@ -148,15 +139,4 @@ Check if elevator should stop at floor.
 
 
 Definition at line 46 of file queue.\+c.
-
-\index{queue.\+h@{queue.\+h}!queue\+\_\+update\+\_\+orders@{queue\+\_\+update\+\_\+orders}}
-\index{queue\+\_\+update\+\_\+orders@{queue\+\_\+update\+\_\+orders}!queue.\+h@{queue.\+h}}
-\subsubsection[{\texorpdfstring{queue\+\_\+update\+\_\+orders()}{queue_update_orders()}}]{\setlength{\rightskip}{0pt plus 5cm}void queue\+\_\+update\+\_\+orders (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{queue_8h_a9c8ee999898cb642da2cc838de1f2301}{}\label{queue_8h_a9c8ee999898cb642da2cc838de1f2301}
-Iterate buttons and update orders accordingly. 
-
-Definition at line 115 of file queue.\+c.
 

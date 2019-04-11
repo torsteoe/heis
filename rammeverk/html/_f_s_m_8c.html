@@ -122,8 +122,11 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a48e99c047b0c13aec82a17eff3de58c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_s_m_8c.html#a48e99c047b0c13aec82a17eff3de58c5">FSM_init</a> ()</td></tr>
+<tr class="memdesc:a48e99c047b0c13aec82a17eff3de58c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize elevator: Starts timer, initializes orders and moves elevator to initial position.  <a href="#a48e99c047b0c13aec82a17eff3de58c5">More...</a><br /></td></tr>
 <tr class="separator:a48e99c047b0c13aec82a17eff3de58c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a304836ec047ed724b16b976249aca1f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_s_m_8c.html#a304836ec047ed724b16b976249aca1f1">FSM_update_state</a> ()</td></tr>
+<tr class="memitem:a304836ec047ed724b16b976249aca1f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a304836ec047ed724b16b976249aca1f1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_s_m_8c.html#a304836ec047ed724b16b976249aca1f1">FSM_update_state</a> ()</td></tr>
+<tr class="memdesc:a304836ec047ed724b16b976249aca1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform action based on what state the elevator is in. Change state if required by <a class="el" href="elev_8h.html" title="These functions provides an interface to the elevators in the real time lab. ">elev.h</a> or <a class="el" href="queue_8h.html" title="A library for accessing queues and doing operations on queue. ">queue.h</a>. <br /></td></tr>
 <tr class="separator:a304836ec047ed724b16b976249aca1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -179,27 +182,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>timeout</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initialize elevator: Starts timer, initializes orders and moves elevator to initial position. </p><dl class="section return"><dt>Returns</dt><dd><code>1</code> on success, <code>0</code> if failed initiation. </dd></dl>
+
+<p>Initialize elevator: Starts timer, initializes orders and moves elevator to initial position. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>1</code> on success, <code>0</code> if failed initiation. </dd></dl>
 
 <p>Definition at line <a class="el" href="_f_s_m_8c_source.html#l00037">37</a> of file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a304836ec047ed724b16b976249aca1f1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void FSM_update_state </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Perform action based on what state the elevator is in. Change state if required by <a class="el" href="elev_8h.html" title="These functions provides an interface to the elevators in the real time lab. ">elev.h</a> or <a class="el" href="queue_8h.html" title="A library for accessing queues and doing operations on queue. ">queue.h</a>. </p>
-
-<p>Definition at line <a class="el" href="_f_s_m_8c_source.html#l00063">63</a> of file <a class="el" href="_f_s_m_8c_source.html">FSM.c</a>.</p>
 
 </div>
 </div>
