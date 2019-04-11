@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief A simple library for defining channels for elevator control
+ * @brief A simple library for defining channels for elevator control.
  * 
  */
 // Channel definitions for elevator control using LibComedi

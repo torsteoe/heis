@@ -6,20 +6,26 @@
 #include "stdlib.h"
 #include <stdio.h>
 
+/**
+  States for the state machine.
+*/
 typedef enum STATES {
-    //INIT, //maybe superfluous
     NOTMOVINGATFLOOR, 
     MOVINGDOWN,
     MOVINGUP,
     STOPSTATE,
-    NOTMOVINGMIDDLE //mellom etasjer
+    NOTMOVINGMIDDLE //mellom etasjer i ro.
 } state;
 
+
 static state now_state = NOTMOVINGMIDDLE;
+
+
+
 static elev_motor_direction_t previous_direction; //-1 for down, 1 for up
 
 
-//hjelpefunksjoner
+//helper functions
 
 static int m_ordered_to_same_floor();
 static int m_ordered_up();
@@ -53,10 +59,6 @@ int FSM_init() {
 
 
 int timeout;
-int FSM_get_state() {
-    return now_state;
-}
-
 
 void FSM_update_state() {
 
@@ -68,6 +70,7 @@ void FSM_update_state() {
         
             elev_set_motor_direction(DIRN_STOP);
             doors_change_state(timeout);
+            
             
             
             if (elev_get_stop_signal()) {

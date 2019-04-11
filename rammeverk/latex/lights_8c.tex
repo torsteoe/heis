@@ -1,17 +1,17 @@
 \hypertarget{lights_8c}{}\section{source/lights.c File Reference}
-\label{lights_8c}\index{source/lights.c@{source/lights.c}}
+\label{lights_8c}\index{source/lights.\+c@{source/lights.\+c}}
 
 
 Implementation file for the lights module.  
 
 
-{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}malloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lights.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}malloc.\+h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{lights_8c_a210043a52c83614c197bbca4a09bb5d2}{lights\+\_\+update\+\_\+lights}} ()
-\end{DoxyCompactItemize}
+void \hyperlink{lights_8c_a1759a74eb6e5d937151605b95c974439}{lights\+\_\+update\+\_\+lights} (int last\+\_\+floor\+\_\+visited, int $\ast$$\ast$pp\+\_\+orders)
+\begin{DoxyCompactList}\small\item\em Updates all lights except door lamp and stop lamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -20,13 +20,26 @@ Implementation file for the lights module.
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{lights_8c_a210043a52c83614c197bbca4a09bb5d2}\label{lights_8c_a210043a52c83614c197bbca4a09bb5d2}} 
-\index{lights.c@{lights.c}!lights\_update\_lights@{lights\_update\_lights}}
-\index{lights\_update\_lights@{lights\_update\_lights}!lights.c@{lights.c}}
-\subsubsection{\texorpdfstring{lights\_update\_lights()}{lights\_update\_lights()}}
-{\footnotesize\ttfamily void lights\+\_\+update\+\_\+lights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\index{lights.\+c@{lights.\+c}!lights\+\_\+update\+\_\+lights@{lights\+\_\+update\+\_\+lights}}
+\index{lights\+\_\+update\+\_\+lights@{lights\+\_\+update\+\_\+lights}!lights.\+c@{lights.\+c}}
+\subsubsection[{\texorpdfstring{lights\+\_\+update\+\_\+lights(int last\+\_\+floor\+\_\+visited, int $\ast$$\ast$pp\+\_\+orders)}{lights_update_lights(int last_floor_visited, int **pp_orders)}}]{\setlength{\rightskip}{0pt plus 5cm}void lights\+\_\+update\+\_\+lights (
+\begin{DoxyParamCaption}
+\item[{int}]{last\+\_\+floor\+\_\+visited, }
+\item[{int $\ast$$\ast$}]{pp\+\_\+orders}
+\end{DoxyParamCaption}
+)}\hypertarget{lights_8c_a1759a74eb6e5d937151605b95c974439}{}\label{lights_8c_a1759a74eb6e5d937151605b95c974439}
+
 
 Updates all lights except door lamp and stop lamp. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em last\+\_\+floor\+\_\+visited} & floor last visited or current floor if elevator on floor, used to set floor indicator lamp. \\
+\hline
+\mbox{\tt in,out}  & {\em pp\+\_\+orders} & pointer to dynamically allocated array containing all orders. Used to set button lights. Freed at end of function. \\
+\hline
+\end{DoxyParams}
+
 
 Definition at line 13 of file lights.\+c.
 

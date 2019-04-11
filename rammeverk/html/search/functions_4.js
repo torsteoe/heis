@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lights_5fupdate_5flights',['lights_update_lights',['../lights_8c.html#a210043a52c83614c197bbca4a09bb5d2',1,'lights_update_lights():&#160;lights.c'],['../lights_8h.html#a210043a52c83614c197bbca4a09bb5d2',1,'lights_update_lights():&#160;lights.c']]]
+  ['lights_5fupdate_5flights',['lights_update_lights',['../lights_8c.html#a1759a74eb6e5d937151605b95c974439',1,'lights_update_lights(int last_floor_visited, int **pp_orders):&#160;lights.c'],['../lights_8h.html#a1759a74eb6e5d937151605b95c974439',1,'lights_update_lights(int last_floor_visited, int **pp_orders):&#160;lights.c']]]
 ];

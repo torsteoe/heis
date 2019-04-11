@@ -10,21 +10,18 @@
 #include "timer.h"
 #include "doors.h"
 
+
 /**
-  Initialize elevator.
+  @brief Initialize elevator: Starts timer, initializes orders and moves elevator to initial position.
+  @return @c 1 on success, @c 0 if failed initiation.
 */
 int FSM_init();
 
 /**
-  Perform action based on what state one is in. Change state if required.
+  @brief Perform action based on what state the elevator is in. Change state if required by elev.h or queue.h.
 */
 void FSM_update_state();
 
-/**
-  Initialize elevator.
-  @return @c 0 to @c 4 based on current state.
-*/
-int FSM_get_state();
 
 
 

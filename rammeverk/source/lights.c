@@ -6,17 +6,17 @@
 #include "malloc.h"
 //hjelpefunksjoner
 
-static void m_set_floor_indicator_lights(int previous_floor);
+static void m_set_floor_indicator_lights(int last_floor_visited);
 static void m_set_order_indicator_lights(int ** pp_orders);
 
 
-void lights_update_lights(int previous_floor, int ** pp_orders) {
-    m_set_floor_indicator_lights(previous_floor);
+void lights_update_lights(int last_floor_visited, int ** pp_orders) {
+    m_set_floor_indicator_lights(last_floor_visited);
     m_set_order_indicator_lights(pp_orders);
 }
 
-void m_set_floor_indicator_lights(int previous_floor) {
-    elev_set_floor_indicator(previous_floor);
+void m_set_floor_indicator_lights(int last_floor_visited) {
+    elev_set_floor_indicator(last_floor_visited);
 }
 
 
