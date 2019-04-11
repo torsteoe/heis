@@ -6,6 +6,11 @@
 #include "stdlib.h"
 #include <stdio.h>
 
+
+//////////////////////////////
+////       VARIABLES      ////
+//////////////////////////////
+
 /**
   States for the state machine.
 */
@@ -17,15 +22,14 @@ typedef enum STATES {
     NOTMOVINGMIDDLE //mellom etasjer i ro.
 } state;
 
-
 static state now_state = NOTMOVINGMIDDLE;
-
-
-
+static int m_timeout;
 static elev_motor_direction_t previous_direction; //-1 for down, 1 for up
 
 
-//helper functions
+//////////////////////////////
+//HELPER FUNCTION DECLARATIONS
+//////////////////////////////
 
 static int m_ordered_to_same_floor();
 static int m_ordered_up();
@@ -33,6 +37,10 @@ static int m_ordered_down();
 static int m_on_floor();
 static int m_orders_exist();
 
+
+//////////////////////////////
+////       FUNCTIONS      ////
+//////////////////////////////
 
 int FSM_init() { 
 
@@ -57,38 +65,32 @@ int FSM_init() {
     return 1;
 } 
 
-
-int timeout;
-
 void FSM_update_state() {
 
 
     switch (now_state) {
        
         case NOTMOVINGATFLOOR:
-            timeout = timer_expired(); //in case timer changes during function.
+            m_timeout = timer_expired(); //saving timer_expired() value in case timer changes during function.
         
             elev_set_motor_direction(DIRN_STOP);
-            doors_change_state(timeout);
-            
-            
+            doors_change_state(m_timeout); //closes/opens door based on timer.
             
             if (elev_get_stop_signal()) {
                 now_state = STOPSTATE;
                 break;
             }
 
-            //checks if order on this floor exists in any order_queue
+            //Enters this if-block if order on this floor exists in any order_queue, resets timer and delets orders to this floor.
             else if (m_ordered_to_same_floor()) {
                 now_state = NOTMOVINGATFLOOR; //can be removed but makes code easier to read.
                 timer_start();
                 queue_delete_floor_orders();
                 break;
             }
-            
-            queue_delete_floor_orders();
-
-            if (timeout) {
+   
+            //enters this block when door has been open for 3 seconds.
+            else if (m_timeout) {
                 if (m_ordered_down()) {
                     now_state = MOVINGDOWN;
                     previous_direction = DIRN_DOWN;
@@ -115,7 +117,9 @@ void FSM_update_state() {
                     now_state = NOTMOVINGATFLOOR;
                     timer_start();
                 }
-                else if (!queue_orders_in_direction(DIRN_DOWN)) { //safety measure
+
+                //safety measure: The elevator should never be stuck in this state if no orders in this direction.
+                else if (!queue_orders_in_direction(DIRN_DOWN)) {
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
@@ -137,20 +141,23 @@ void FSM_update_state() {
                     now_state = NOTMOVINGATFLOOR;
                     timer_start();
                 }
+
+                //safety measure: The elevator should never be stuck in this state if no orders in this direction.
                 else if (!queue_orders_in_direction(DIRN_UP)) {
                     now_state = NOTMOVINGATFLOOR;
                 }
             }
             break;
 
+        //in this state as long as STOP button is pressed.
         case STOPSTATE:
             elev_set_motor_direction(DIRN_STOP);
             elev_set_stop_lamp(1);
-            timer_start();
+            timer_start(); //resets timer.
             queue_reset_orders();   
             
 
-            doors_change_state(!(m_on_floor()));
+            doors_change_state(!(m_on_floor())); //only open door if on floor.
             
 
             if (!elev_get_stop_signal() && m_on_floor()) {
@@ -178,6 +185,8 @@ void FSM_update_state() {
                     now_state = MOVINGUP;
                 }
 
+                //If ordered back to last floor visited, previous direction tells us if we are above or below order.
+                //Previous direction only updated when leaving a floor.
                 else if (m_ordered_to_same_floor()) {
                     if (previous_direction == DIRN_DOWN) {
                         now_state = MOVINGUP;
@@ -193,17 +202,21 @@ void FSM_update_state() {
 }
 
 
+//////////////////////////////
+////   HELPER FUNCTIONS   ////
+//////////////////////////////
+
 int m_ordered_to_same_floor() {
     if (m_on_floor()) {
         return (queue_should_I_stop_at_floor(DIRN_DOWN) || queue_should_I_stop_at_floor(DIRN_UP));
     }
-    return (queue_get_priority_order() == queue_get_previous_floor());
+    return (queue_get_priority_order() == queue_get_last_floor_visited());
 }
 int m_ordered_up() {
-    return (m_orders_exist() && queue_get_priority_order() > queue_get_previous_floor());
+    return (m_orders_exist() && queue_get_priority_order() > queue_get_last_floor_visited());
 }
 int m_ordered_down() {
-    return (m_orders_exist() && queue_get_priority_order() < queue_get_previous_floor());
+    return (m_orders_exist() && queue_get_priority_order() < queue_get_last_floor_visited());
 }
 int m_on_floor() {
     return (elev_get_floor_sensor_signal() != -1);

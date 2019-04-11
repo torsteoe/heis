@@ -23,7 +23,7 @@ int ** queue_get_orders();
   @brief Fetches previous or current floor if elevator on floor.
   @return floor ranging from @c 0 to @c 3.
 */
-int queue_get_previous_floor();
+int queue_get_last_floor_visited();
 
 /**
   @brief Fetches priority order, which is the first floor ordered that has still not been visited since order.
