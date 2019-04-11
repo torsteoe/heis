@@ -11,6 +11,9 @@
 #include <stdio.h>
 
 
+//////////////////////////////
+////      FUNCTIONS       ////
+//////////////////////////////
 
 /**
   @brief Fetches array of order_lists.

@@ -2,12 +2,16 @@
  * @file
  * @brief A simple library for doing operations on lights.
  */
- #ifndef LIGHTS_H__	/*include guard*/
+#ifndef LIGHTS_H__	/*include guard*/
 #define LIGHTS_H__
 
 
 #include "elev.h"
 
+
+//////////////////////////////
+////      FUNCTIONS       ////
+//////////////////////////////
 
 /**
   @brief Updates all lights except door lamp and stop lamp. 

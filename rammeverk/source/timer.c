@@ -3,7 +3,7 @@
  * @brief Implementation file for the timer module.
  */
 #include "timer.h"
-
+#include <time.h>
 
 //////////////////////////////
 ////      VARIABLES       ////

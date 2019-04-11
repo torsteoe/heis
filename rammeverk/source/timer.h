@@ -5,8 +5,12 @@
 #ifndef TIMER_H__	/*include guard*/
 #define TIMER_H__
 
-#include <time.h>
 
+
+
+//////////////////////////////
+////      FUNCTIONS       ////
+//////////////////////////////
 
 /**
   @brief Reset timer.

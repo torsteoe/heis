@@ -12,7 +12,7 @@ A library for accessing queues and doing operations on queue.
 \item 
 int $\ast$$\ast$ \hyperlink{queue_8h_a9099e4c8298049220ba24a7ed21d6b1c}{queue\+\_\+get\+\_\+orders} ()
 \begin{DoxyCompactList}\small\item\em Fetches array of order\+\_\+lists. \end{DoxyCompactList}\item 
-int \hyperlink{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}{queue\+\_\+get\+\_\+previous\+\_\+floor} ()
+int \hyperlink{queue_8h_afc56e1ae039b14e9fe51bb55786c606c}{queue\+\_\+get\+\_\+last\+\_\+floor\+\_\+visited} ()
 \begin{DoxyCompactList}\small\item\em Fetches previous or current floor if elevator on floor. \end{DoxyCompactList}\item 
 int \hyperlink{queue_8h_a62f3ee497cfec496d15e0e210dd1ee78}{queue\+\_\+get\+\_\+priority\+\_\+order} ()
 \begin{DoxyCompactList}\small\item\em Fetches priority order, which is the first floor ordered that has still not been visited since order. \end{DoxyCompactList}\item 
@@ -40,6 +40,24 @@ A library for accessing queues and doing operations on queue.
 
 
 \subsection{Function Documentation}
+\index{queue.\+h@{queue.\+h}!queue\+\_\+get\+\_\+last\+\_\+floor\+\_\+visited@{queue\+\_\+get\+\_\+last\+\_\+floor\+\_\+visited}}
+\index{queue\+\_\+get\+\_\+last\+\_\+floor\+\_\+visited@{queue\+\_\+get\+\_\+last\+\_\+floor\+\_\+visited}!queue.\+h@{queue.\+h}}
+\subsubsection[{\texorpdfstring{queue\+\_\+get\+\_\+last\+\_\+floor\+\_\+visited()}{queue_get_last_floor_visited()}}]{\setlength{\rightskip}{0pt plus 5cm}int queue\+\_\+get\+\_\+last\+\_\+floor\+\_\+visited (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8h_afc56e1ae039b14e9fe51bb55786c606c}{}\label{queue_8h_afc56e1ae039b14e9fe51bb55786c606c}
+
+
+Fetches previous or current floor if elevator on floor. 
+
+\begin{DoxyReturn}{Returns}
+floor ranging from {\ttfamily 0} to {\ttfamily 3}. 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file queue.\+c.
+
 \index{queue.\+h@{queue.\+h}!queue\+\_\+get\+\_\+orders@{queue\+\_\+get\+\_\+orders}}
 \index{queue\+\_\+get\+\_\+orders@{queue\+\_\+get\+\_\+orders}!queue.\+h@{queue.\+h}}
 \subsubsection[{\texorpdfstring{queue\+\_\+get\+\_\+orders()}{queue_get_orders()}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$$\ast$ queue\+\_\+get\+\_\+orders (
@@ -56,25 +74,7 @@ pointer to dynamically allocated array containing all orders.
 \end{DoxyReturn}
 
 
-Definition at line 26 of file queue.\+c.
-
-\index{queue.\+h@{queue.\+h}!queue\+\_\+get\+\_\+previous\+\_\+floor@{queue\+\_\+get\+\_\+previous\+\_\+floor}}
-\index{queue\+\_\+get\+\_\+previous\+\_\+floor@{queue\+\_\+get\+\_\+previous\+\_\+floor}!queue.\+h@{queue.\+h}}
-\subsubsection[{\texorpdfstring{queue\+\_\+get\+\_\+previous\+\_\+floor()}{queue_get_previous_floor()}}]{\setlength{\rightskip}{0pt plus 5cm}int queue\+\_\+get\+\_\+previous\+\_\+floor (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}{}\label{queue_8h_adfb872c17097206a7f0ed3ed22aaad28}
-
-
-Fetches previous or current floor if elevator on floor. 
-
-\begin{DoxyReturn}{Returns}
-floor ranging from {\ttfamily 0} to {\ttfamily 3}. 
-\end{DoxyReturn}
-
-
-Definition at line 36 of file queue.\+c.
+Definition at line 37 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+get\+\_\+priority\+\_\+order@{queue\+\_\+get\+\_\+priority\+\_\+order}}
 \index{queue\+\_\+get\+\_\+priority\+\_\+order@{queue\+\_\+get\+\_\+priority\+\_\+order}!queue.\+h@{queue.\+h}}
@@ -92,7 +92,7 @@ floor ranging from {\ttfamily 0} to {\ttfamily 3}.
 \end{DoxyReturn}
 
 
-Definition at line 40 of file queue.\+c.
+Definition at line 49 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+orders\+\_\+in\+\_\+direction@{queue\+\_\+orders\+\_\+in\+\_\+direction}}
 \index{queue\+\_\+orders\+\_\+in\+\_\+direction@{queue\+\_\+orders\+\_\+in\+\_\+direction}!queue.\+h@{queue.\+h}}
@@ -115,7 +115,7 @@ Check if there are orders in direction that elevator will stop at. Safety measur
 \end{DoxyReturn}
 
 
-Definition at line 91 of file queue.\+c.
+Definition at line 96 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor@{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor}}
 \index{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor@{queue\+\_\+should\+\_\+\+I\+\_\+stop\+\_\+at\+\_\+floor}!queue.\+h@{queue.\+h}}
@@ -138,5 +138,5 @@ Check if elevator should stop at floor.
 \end{DoxyReturn}
 
 
-Definition at line 46 of file queue.\+c.
+Definition at line 53 of file queue.\+c.
 

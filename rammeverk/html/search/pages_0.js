@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['my_20personal_20index_20page',['My Personal Index Page',['../index.html',1,'']]]
+  ['our_20main_20page',['Our main page',['../index.html',1,'']]]
 ];

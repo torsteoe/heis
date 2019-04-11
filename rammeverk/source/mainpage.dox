@@ -1,5 +1,4 @@
-/*! \mainpage My Personal Index Page
- *
+/*! \mainpage Our main page
  * \section intro_sec Introduction
  *
  * This is the introduction. Welcome to our documentation. 
@@ -7,9 +6,10 @@
  * \section how_to How to
  *
  * \subsection step1 
- * read documentation
+ * open documentation
  * \subsection step2 
+ * read documentation
+ * \subsection step3
  * close documentation
- * etc...
  * \image html best_meme.png
  */

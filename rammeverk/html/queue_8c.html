@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Heisprosjekt: source/queue.c File Reference</title>
+<title>Elevator project (reaching new heights): source/queue.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Heisprosjekt
+   <div id="projectname">Elevator project (reaching new heights)
    </div>
   </td>
  </tr>
@@ -103,9 +103,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9099e4c8298049220ba24a7ed21d6b1c"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8c.html#a9099e4c8298049220ba24a7ed21d6b1c">queue_get_orders</a> ()</td></tr>
 <tr class="memdesc:a9099e4c8298049220ba24a7ed21d6b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches array of order_lists.  <a href="#a9099e4c8298049220ba24a7ed21d6b1c">More...</a><br /></td></tr>
 <tr class="separator:a9099e4c8298049220ba24a7ed21d6b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfb872c17097206a7f0ed3ed22aaad28"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8c.html#adfb872c17097206a7f0ed3ed22aaad28">queue_get_previous_floor</a> ()</td></tr>
-<tr class="memdesc:adfb872c17097206a7f0ed3ed22aaad28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches previous or current floor if elevator on floor.  <a href="#adfb872c17097206a7f0ed3ed22aaad28">More...</a><br /></td></tr>
-<tr class="separator:adfb872c17097206a7f0ed3ed22aaad28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc56e1ae039b14e9fe51bb55786c606c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8c.html#afc56e1ae039b14e9fe51bb55786c606c">queue_get_last_floor_visited</a> ()</td></tr>
+<tr class="memdesc:afc56e1ae039b14e9fe51bb55786c606c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches previous or current floor if elevator on floor.  <a href="#afc56e1ae039b14e9fe51bb55786c606c">More...</a><br /></td></tr>
+<tr class="separator:afc56e1ae039b14e9fe51bb55786c606c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f3ee497cfec496d15e0e210dd1ee78"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8c.html#a62f3ee497cfec496d15e0e210dd1ee78">queue_get_priority_order</a> ()</td></tr>
 <tr class="memdesc:a62f3ee497cfec496d15e0e210dd1ee78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches priority order, which is the first floor ordered that has still not been visited since order.  <a href="#a62f3ee497cfec496d15e0e210dd1ee78">More...</a><br /></td></tr>
 <tr class="separator:a62f3ee497cfec496d15e0e210dd1ee78"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,6 +143,26 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
 
 <p>Definition in file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="afc56e1ae039b14e9fe51bb55786c606c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int queue_get_last_floor_visited </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fetches previous or current floor if elevator on floor. </p>
+<dl class="section return"><dt>Returns</dt><dd>floor ranging from <code>0</code> to <code>3</code>. </dd></dl>
+
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00045">45</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a9099e4c8298049220ba24a7ed21d6b1c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -159,27 +179,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
 <p>Fetches array of order_lists. </p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to dynamically allocated array containing all orders. </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00026">26</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="adfb872c17097206a7f0ed3ed22aaad28"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int queue_get_previous_floor </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fetches previous or current floor if elevator on floor. </p>
-<dl class="section return"><dt>Returns</dt><dd>floor ranging from <code>0</code> to <code>3</code>. </dd></dl>
-
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00036">36</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00037">37</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -199,7 +199,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
 <p>Fetches priority order, which is the first floor ordered that has still not been visited since order. </p>
 <dl class="section return"><dt>Returns</dt><dd>floor ranging from <code>0</code> to <code>3</code>. </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00040">40</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00049">49</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -226,7 +226,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> to signal orders exist, <code>0</code> to signal no orders. </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00091">91</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00096">96</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -253,7 +253,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>ORDER_SIZE</b> =
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> to signal stop, <code>0</code> to signal no stop </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00046">46</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00053">53</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
