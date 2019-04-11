@@ -26,5 +26,13 @@ int timer_expired() {
     clock_t clock_now = clock();
 
     //compare with clock_var to know if three seconds have passed.
-    return ((clock_now-clock_var)>=SECONDS*CLOCKS_PER_SEC); 
+    int difference = (clock_now-clock_var);
+
+    //every 72nd minute, clock variable will overflow. As a safety measure we will open door and reset clock. Worst case: door open for 6 seconds every 72nd minute.
+    if (difference<0) {
+        clock_var = clock();
+        return 0;
+    }
+
+    return (difference>=SECONDS*CLOCKS_PER_SEC); 
 }

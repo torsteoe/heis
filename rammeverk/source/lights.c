@@ -29,7 +29,10 @@ void lights_update_lights(int last_floor_visited, int ** pp_orders) {
 //////////////////////////////
 
 void m_set_floor_indicator_lights(int last_floor_visited) {
-    elev_set_floor_indicator(last_floor_visited);
+    if (last_floor_visited!=-1) { //Safety measure: last_floor_visited should never be -1
+        elev_set_floor_indicator(last_floor_visited);
+    }
+    
 }
 
 //Takes in array of all order lists. Iterates lists to set button lights.

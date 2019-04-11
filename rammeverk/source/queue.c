@@ -53,7 +53,7 @@ int queue_get_priority_order() {
 int queue_should_I_stop_at_floor(int direction) {
     int floor = elev_get_floor_sensor_signal();
 
-    if (floor == -1) { //if between floors
+    if (floor == -1) { //safety measure in case of call between floors.
         return 0;
     }
 
@@ -117,7 +117,7 @@ void queue_update_orders() {
 
     int current_floor = elev_get_floor_sensor_signal();
 
-    if (current_floor != -1){ //if on floor.
+    if (current_floor != -1){ //only update last_floor_visited if on floor.
         last_floor_visited = current_floor;
     }
     
