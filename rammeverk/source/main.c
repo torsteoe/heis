@@ -6,7 +6,7 @@
 #include "lights.h"
 #include "queue.h"
 /**
-  Main operation loop, loops as long as elevator is operational.
+  @brief Main operation loop, loops as long as elevator is operational.
   @return @c 1 if initiation fails, @c 0 if while-loop breaks.
 */
 int main() {

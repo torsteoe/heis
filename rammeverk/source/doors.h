@@ -10,7 +10,7 @@
 #include "elev.h"
 
 /**
-  Change state of doors (open/closed).
+  @brief Change state of doors (open/closed).
   @param[in] close @c 1 to close door, @c 0 to open.
 */
 void doors_change_state(int close);

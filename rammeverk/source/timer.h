@@ -9,12 +9,12 @@
 
 
 /**
-  Reset timer.
+  @brief Reset timer.
 */
 void timer_start();
 
 /**
-  Check if time passed since timer was reset is more than 3 seconds.
+  @brief Check if time passed since timer was reset is more than 3 seconds.
   @return @c 1 if timer is out, @c 0 otherwise.
 */
 int timer_expired();
