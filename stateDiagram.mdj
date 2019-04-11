@@ -311,8 +311,8 @@
 									"left": 112,
 									"top": 224,
 									"width": 273,
-									"height": 76,
-									"text": "This is the FSM module's state diagram"
+									"height": 80,
+									"text": "This is the FSM module's state diagram\n\n_ REMOVE FROM WHILE LOOP IN MAIN __"
 								},
 								{
 									"_type": "UMLStateView",
