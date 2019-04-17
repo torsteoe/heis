@@ -17,8 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Main",
-					"defaultDiagram": true
+					"name": "Main"
 				}
 			]
 		},
@@ -264,6 +263,7 @@
 									]
 								}
 							],
+							"defaultDiagram": true,
 							"ownedViews": [
 								{
 									"_type": "UMLSeqLifelineView",

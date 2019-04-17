@@ -18,7 +18,21 @@
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
 					"name": "Main",
-					"defaultDiagram": true
+					"ownedViews": [
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAFqKoPvUOzweiE=",
+							"_parent": {
+								"$ref": "AAAAAAFElm65HFNt33E="
+							},
+							"font": "Arial;16;0",
+							"left": 64,
+							"top": 168,
+							"width": 273,
+							"height": 92,
+							"text": "Sometimes a bug happends where the state diagram won't appear right away. You will find it in the toolbar to the right if you are using \"starUML\""
+						}
+					]
 				},
 				{
 					"_type": "UMLStateMachine",
@@ -35,6 +49,7 @@
 								"$ref": "AAAAAAFpn6KfG+t0IeU="
 							},
 							"name": "StatechartDiagram1",
+							"defaultDiagram": true,
 							"ownedViews": [
 								{
 									"_type": "UMLPseudostateView",
@@ -312,7 +327,7 @@
 									"top": 224,
 									"width": 273,
 									"height": 80,
-									"text": "This is the FSM module's state diagram\n\n_ REMOVE FROM WHILE LOOP IN MAIN __"
+									"text": "This is the FSM module's state diagram"
 								},
 								{
 									"_type": "UMLStateView",
